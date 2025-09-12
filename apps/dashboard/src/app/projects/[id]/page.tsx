@@ -3,9 +3,10 @@
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, Award } from "lucide-react";
 import MatrixRain from "@/components/animations/MatrixRain";
 import Navigation from "@/components/layout/Navigation";
+import TechStackIcon from "@/components/ui/TechStackIcon";
 
 const projectDetails = {
   "ai-developer-agent": {
@@ -196,14 +197,14 @@ export default function ProjectDetailPage() {
         {/* Tech Stack */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold text-green-400 mb-4">Technology Stack</h2>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {project.techStack.map((tech) => (
-              <span
+              <div
                 key={tech}
-                className="px-4 py-2 bg-gray-800/50 border border-green-500/30 text-gray-300 rounded-lg"
+                className="flex items-center gap-3 px-4 py-3 bg-gray-800/50 border border-green-500/30 rounded-lg hover:border-green-400/50 transition-all duration-200 hover:bg-gray-800/70"
               >
-                {tech}
-              </span>
+                <TechStackIcon tech={tech} size={24} className="" showTooltip={false} />
+              </div>
             ))}
           </div>
         </div>
@@ -218,6 +219,31 @@ export default function ProjectDetailPage() {
                 <span className="text-gray-300">{feature}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Skills & Technologies Section for Employers */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold text-green-400 mb-4 flex items-center gap-2">
+            <Award className="text-cyan-400" size={24} />
+            Skills & Technologies Demonstrated
+          </h2>
+          <div className="bg-gradient-to-r from-gray-800/30 to-gray-900/30 border border-cyan-500/20 rounded-lg p-6">
+            <p className="text-gray-300 mb-4 text-sm">
+              This project showcases expertise in cutting-edge technologies valuable to employers:
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {[
+                "Gen AI", "Azure AI Foundry", "RAG pipelines", "Machine Learning",
+                "LLMs", "Python", "C#", "APIs", "OpenAI", "LangChain",
+                "Frontend Development", "Backend Development", "TypeScript", "React"
+              ].map((skill) => (
+                <div key={skill} className="flex items-center gap-2 text-sm">
+                  <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
+                  <span className="text-gray-300">{skill}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

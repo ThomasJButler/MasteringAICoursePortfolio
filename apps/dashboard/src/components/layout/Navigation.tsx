@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github, Linkedin } from "lucide-react";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,8 +58,8 @@ export default function Navigation() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
-              <Link href="/" className="text-green-400 font-bold text-xl">
-                AI Portfolio
+              <Link href="/" className="text-green-400 font-bold text-xl bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent hover:from-cyan-400 hover:to-green-400 transition-all duration-300">
+                ML&GenAI
               </Link>
 
               {/* Desktop Navigation */}
@@ -85,15 +85,19 @@ export default function Navigation() {
               <Link
                 href="https://github.com/tombutler"
                 target="_blank"
-                className="text-gray-400 hover:text-green-400 transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+                aria-label="GitHub Profile"
               >
+                <Github size={18} />
                 GitHub
               </Link>
               <Link
                 href="https://linkedin.com/in/tombutler"
                 target="_blank"
-                className="text-gray-400 hover:text-green-400 transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+                aria-label="LinkedIn Profile"
               >
+                <Linkedin size={18} />
                 LinkedIn
               </Link>
             </div>
@@ -132,15 +136,17 @@ export default function Navigation() {
                 <Link
                   href="https://github.com/tombutler"
                   target="_blank"
-                  className="block text-gray-400 hover:text-green-400 transition-colors"
+                  className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 >
+                  <Github size={18} />
                   GitHub
                 </Link>
                 <Link
                   href="https://linkedin.com/in/tombutler"
                   target="_blank"
-                  className="block text-gray-400 hover:text-green-400 transition-colors"
+                  className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 >
+                  <Linkedin size={18} />
                   LinkedIn
                 </Link>
               </div>
