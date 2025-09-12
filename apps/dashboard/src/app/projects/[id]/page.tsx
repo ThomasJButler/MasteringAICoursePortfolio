@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Github, ExternalLink, Award } from "lucide-react";
 import MatrixRain from "@/components/animations/MatrixRain";
 import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 import TechStackIcon from "@/components/ui/TechStackIcon";
 
 const projectDetails = {
@@ -326,6 +327,9 @@ export default function ProjectDetailPage() {
           )}
         </div>
       </main>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

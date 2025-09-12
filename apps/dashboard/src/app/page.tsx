@@ -6,6 +6,7 @@ import AnimatedHero from "@/components/animations/AnimatedHero";
 import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import TechStackIcon from "@/components/ui/TechStackIcon";
 import { animate as anime, stagger } from 'animejs';
 import { useEffect, useRef } from "react";
 import { animeEasings, durations } from "@/lib/easings";
@@ -69,16 +70,16 @@ export default function Home() {
 
         {/* Skills & Technologies Section */}
         <section className="container mx-auto px-4 py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
               Skills & Technologies Demonstrated
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              This portfolio showcases expertise in cutting-edge technologies valuable to employers
+              Expertise in cutting-edge technologies valuable to employers
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {[
               "Gen AI", "Azure AI Foundry", "RAG pipelines", "Machine Learning", 
               "LLMs", "Python", "C#", "APIs", "OpenAI", "LangChain",
@@ -86,12 +87,27 @@ export default function Home() {
             ].map((skill) => (
               <div 
                 key={skill} 
-                className="group bg-gray-800/30 hover:bg-gray-800/50 border border-green-500/20 hover:border-green-400/40 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10"
+                className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 text-center transition-all duration-500 hover:border-gray-600/70 hover:shadow-2xl hover:shadow-white/5 hover:-translate-y-1"
               >
-                <div className="w-3 h-3 bg-cyan-400 rounded-full mx-auto mb-2 group-hover:bg-green-400 transition-colors duration-300"></div>
-                <span className="text-sm text-gray-300 group-hover:text-white font-medium transition-colors duration-300">
-                  {skill}
-                </span>
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Icon */}
+                <div className="relative mb-6 flex justify-center">
+                  <div className="p-4 bg-gray-800/50 rounded-full group-hover:bg-gray-700/50 transition-colors duration-300">
+                    <TechStackIcon tech={skill} size={32} className="opacity-80 group-hover:opacity-100 transition-opacity duration-300" showTooltip={false} />
+                  </div>
+                </div>
+                
+                {/* Text */}
+                <div className="relative">
+                  <h3 className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300 leading-relaxed">
+                    {skill}
+                  </h3>
+                </div>
+                
+                {/* Subtle highlight bar */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-green-400/0 via-green-400/60 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             ))}
           </div>
