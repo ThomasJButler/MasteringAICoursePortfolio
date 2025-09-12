@@ -158,12 +158,20 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "ai-developer-agent",
-    title: "AI Developer Agent",
-    description: "Intelligent code generation and review system with Git integration",
-    week: "Week 1-2",
+    id: "ai-code-generator",
+    title: "AI Code Generator",
+    description: "Natural language to code conversion with multi-language support",
+    week: "Week 1",
     status: "upcoming",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter"],
+  },
+  {
+    id: "git-review-assistant",
+    title: "Git Review Assistant",
+    description: "AI-powered code review system with automated PR feedback",
+    week: "Week 2",
+    status: "upcoming",
+    techStack: ["LangChain", "GitHub API", "FastAPI"],
   },
   {
     id: "rag-chatbot",
@@ -196,6 +204,14 @@ const projects: Project[] = [
     week: "Contest",
     status: "in-progress",
     techStack: ["LangChain", "ChromaDB", "D3.js"],
+  },
+  {
+    id: "sql-ball",
+    title: "SQL-Ball",
+    description: "Football data analytics with natural language queries and AI insights",
+    week: "Bonus",
+    status: "upcoming",
+    techStack: ["Supabase", "LangChain", "D3.js"],
   },
   {
     id: "portfolio-dashboard",

@@ -10,31 +10,58 @@ import Footer from "@/components/layout/Footer";
 import TechStackIcon from "@/components/ui/TechStackIcon";
 
 const projectDetails = {
-  "ai-developer-agent": {
-    title: "AI Developer Agent",
-    fullDescription: "An intelligent code generation and review system that leverages advanced AI models to assist developers in writing, reviewing, and optimizing code. Features Git integration for automated PR reviews and test generation capabilities.",
-    week: "Week 1-2",
+  "ai-code-generator": {
+    title: "AI Code Generator",
+    fullDescription: "An intelligent natural language to code conversion system that leverages advanced AI models to generate high-quality, well-structured code from plain English descriptions. Features support for multiple programming languages and frameworks.",
+    week: "Week 1",
     status: "upcoming",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter", "Python", "TypeScript"],
     learnings: [
       "Advanced prompt engineering for code generation tasks",
-      "Integration patterns between LLMs and development tools",
-      "AST parsing and manipulation with Tree-sitter",
-      "Building secure AI-powered developer workflows",
-      "Performance optimization for real-time code analysis"
+      "Multi-language code generation strategies",
+      "AST parsing and code structure validation",
+      "Context-aware code completion techniques",
+      "Performance optimization for real-time generation"
     ],
     features: [
       "Natural language to code generation",
-      "Automated code review with actionable suggestions",
+      "Multi-language support (Python, TypeScript, Java, C#)",
       "Test case generation for any function",
-      "Performance optimization recommendations",
-      "Git PR integration for automated reviews",
+      "Code documentation generation",
+      "Framework-specific code templates",
       "UK English code comments support",
-      "Design pattern recognition and suggestions",
-      "Security vulnerability detection"
+      "Design pattern integration",
+      "Code quality optimization"
     ],
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/ai-developer-agent",
+    github: "https://github.com/tombutler/ai-code-generator",
+    demo: null
+  },
+  "git-review-assistant": {
+    title: "Git Review Assistant",
+    fullDescription: "An AI-powered code review system that provides intelligent feedback on pull requests, identifies potential issues, and suggests improvements. Integrates seamlessly with Git workflows for automated code quality assurance.",
+    week: "Week 2",
+    status: "upcoming",
+    techStack: ["LangChain", "GPT-4o", "GitHub API", "Python", "FastAPI"],
+    learnings: [
+      "Automated code review methodologies",
+      "Git integration patterns and webhook handling",
+      "Static code analysis with AI enhancement",
+      "Security vulnerability detection in code",
+      "Performance bottleneck identification"
+    ],
+    features: [
+      "Automated pull request reviews",
+      "Security vulnerability detection",
+      "Performance optimization suggestions",
+      "Code style consistency checking",
+      "Git commit message improvement",
+      "Refactoring recommendations",
+      "Test coverage analysis",
+      "Documentation gap identification"
+    ],
+    implementation: "Coming soon...",
+    github: "https://github.com/tombutler/git-review-assistant",
     demo: null
   },
   "rag-chatbot": {
@@ -143,6 +170,33 @@ const projectDetails = {
     ],
     implementation: "Currently in development. Targeting contest submission deadline.",
     github: "https://github.com/tombutler/sql-query-buddy",
+    demo: null
+  },
+  "sql-ball": {
+    title: "SQL-Ball",
+    fullDescription: "An intelligent football data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
+    week: "Bonus",
+    status: "upcoming",
+    techStack: ["Supabase", "LangChain", "OpenAI", "D3.js", "React", "PostgreSQL"],
+    learnings: [
+      "Sports data analytics and statistical modeling",
+      "Real-time database integration with Supabase",
+      "Natural language to SQL for sports queries",
+      "Predictive analytics with machine learning",
+      "Interactive sports data visualization techniques"
+    ],
+    features: [
+      "Natural language football statistics queries",
+      "Player performance analytics dashboard",
+      "Match prediction algorithms",
+      "Team comparison and analysis tools",
+      "Real-time match data integration",
+      "Interactive data visualizations",
+      "Fantasy football insights",
+      "Historical trend analysis"
+    ],
+    implementation: "Coming soon...",
+    github: "https://github.com/tombutler/sql-ball",
     demo: null
   },
   "portfolio-dashboard": {
