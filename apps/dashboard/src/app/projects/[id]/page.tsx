@@ -143,7 +143,7 @@ export default function ProjectDetailPage() {
         <Navigation />
         <div className="relative z-10 container mx-auto px-4 py-32 text-center">
           <h1 className="text-4xl font-bold text-red-400 mb-4">Project Not Found</h1>
-          <p className="text-gray-400 mb-8">The project you're looking for doesn't exist.</p>
+          <p className="text-gray-400 mb-8">The project you&apos;re looking for doesn&apos;t exist.</p>
           <Button onClick={() => router.push("/")} className="bg-green-500 hover:bg-green-600 text-black">
             Back to Home
           </Button>

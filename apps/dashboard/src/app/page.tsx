@@ -1,108 +1,96 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import MatrixRain from "@/components/animations/MatrixRain";
+import OptimizedMatrixRain from "@/components/animations/OptimizedMatrixRain";
+import AnimatedHero from "@/components/animations/AnimatedHero";
+import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import { motion } from "framer-motion";
-import React from "react";
+import { animate as anime, stagger } from 'animejs';
+import { useEffect, useRef } from "react";
+import { animeEasings, durations } from "@/lib/easings";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function Home() {
+  const contestRef = useRef<HTMLDivElement>(null);
+  const [contestSectionRef, isContestVisible] = useIntersectionObserver<HTMLElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (isContestVisible && !prefersReducedMotion && contestRef.current) {
+      anime(contestRef.current, {
+        opacity: [0, 1],
+        scale: [0.9, 1],
+        translateY: [30, 0],
+        duration: durations.slow,
+        easing: animeEasings.appleElastic,
+      });
+
+      anime(contestRef.current.querySelectorAll("h2, p, button"), {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: durations.normal,
+        delay: stagger(100, { start: 200 }),
+        easing: animeEasings.smoothOut,
+      });
+    }
+  }, [isContestVisible, prefersReducedMotion]);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Matrix Rain Background Effect */}
-      <MatrixRain />
+      {/* Optimized Matrix Rain Background Effect */}
+      <OptimizedMatrixRain />
       
       {/* Navigation */}
       <Navigation />
 
       {/* Main Content */}
       <main className="relative z-10">
-        {/* Hero Section */}
-        <section id="hero" className="container mx-auto px-4 py-20 text-center pt-32">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent"
-          >
-            AI Course Portfolio
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
-          >
-            Mastering Generative AI & Agents for Developers
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex gap-4 justify-center"
-          >
-            <Button 
-              className="bg-green-500 hover:bg-green-600 text-black font-semibold"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Projects
-            </Button>
-            <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10">
-              <Link href="https://github.com/tombutler" target="_blank">
-                GitHub
-              </Link>
-            </Button>
-          </motion.div>
-        </section>
+        {/* Animated Hero Section */}
+        <AnimatedHero />
 
-        {/* Projects Grid */}
+        {/* Animated Projects Grid */}
         <section id="projects" className="container mx-auto px-4 py-20">
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center mb-12 text-green-400"
-          >
-            Portfolio Projects
-          </motion.h2>
+          <ProjectsHeader />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <motion.div
+              <AnimatedProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
+                project={project}
+                index={index}
+              />
             ))}
           </div>
         </section>
 
-        {/* Contest Banner */}
-        <section id="contest" className="container mx-auto px-4 py-20">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-green-900/50 to-cyan-900/50 rounded-lg p-8 text-center border border-green-500/30"
+        {/* Animated Contest Banner */}
+        <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 py-20">
+          <div 
+            ref={contestRef}
+            className="bg-gradient-to-r from-green-900/50 to-cyan-900/50 rounded-lg p-8 text-center border border-green-500/30 relative overflow-hidden"
+            style={{ opacity: 0 }}
           >
-            <h2 className="text-3xl font-bold mb-4 text-green-400">
+            <ContestGlow />
+            <h2 className="text-3xl font-bold mb-4 text-green-400" style={{ opacity: 0 }}>
               🏆 Contest Entry: SQL Query Buddy
             </h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto" style={{ opacity: 0 }}>
               Natural language to SQL with AI-powered optimisation, visual query builder, 
               and real-time performance analysis.
             </p>
-            <Button className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold">
+            <Button 
+              className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold transform-gpu"
+              style={{ opacity: 0 }}
+              onMouseEnter={(e) => handleButtonHover(e.currentTarget)}
+              onMouseLeave={(e) => handleButtonLeave(e.currentTarget)}
+            >
               View Contest Project
             </Button>
-          </motion.div>
+          </div>
         </section>
       </main>
       
@@ -173,60 +161,74 @@ const projects: Project[] = [
   },
 ];
 
-function ProjectCard({ project }: { project: Project }) {
-  const [isHovered, setIsHovered] = React.useState(false);
-  
-  const statusColors = {
-    completed: "border-green-500 bg-green-500/10",
-    "in-progress": "border-cyan-500 bg-cyan-500/10",
-    upcoming: "border-gray-500 bg-gray-500/10",
-  };
+function ProjectsHeader() {
+  const [headerRef, isVisible] = useIntersectionObserver<HTMLHeadingElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
 
-  const statusText = {
-    completed: "Completed",
-    "in-progress": "In Progress",
-    upcoming: "Upcoming",
-  };
+  useEffect(() => {
+    if (isVisible && !prefersReducedMotion && headerRef.current) {
+      anime(headerRef.current, {
+        opacity: [0, 1],
+        translateY: [-30, 0],
+        duration: durations.slow,
+        easing: animeEasings.appleEaseOut,
+      });
+    }
+  }, [isVisible, prefersReducedMotion, headerRef]);
 
   return (
-    <motion.div 
-      className="group relative border border-gray-800 rounded-lg p-6 bg-gray-900/50 hover:bg-gray-900/80 transition-all duration-300 hover:border-green-500/50"
-      whileHover={{ scale: 1.02 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+    <h2
+      ref={headerRef}
+      className="text-4xl font-bold text-center mb-12 text-green-400"
+      style={{ opacity: 0 }}
     >
-      <div className="absolute top-0 right-0 -mt-1 -mr-1">
-        <span className={`inline-block px-2 py-1 text-xs rounded-md ${statusColors[project.status]}`}>
-          {statusText[project.status]}
-        </span>
-      </div>
-      
-      <h3 className="text-xl font-semibold mb-2 text-green-400 group-hover:text-cyan-400 transition-colors">
-        {project.title}
-      </h3>
-      
-      <p className="text-sm text-gray-500 mb-3">{project.week}</p>
-      
-      <p className="text-gray-300 mb-4 text-sm">
-        {project.description}
-      </p>
-      
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.techStack.map((tech) => (
-          <span
-            key={tech}
-            className="px-2 py-1 text-xs bg-gray-800 text-gray-400 rounded"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      
-      <Link href={`/projects/${project.id}`}>
-        <Button size="sm" className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50">
-          View Project →
-        </Button>
-      </Link>
-    </motion.div>
+      Portfolio Projects
+    </h2>
   );
+}
+
+function ContestGlow() {
+  const glowRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (!glowRef.current || prefersReducedMotion) return;
+
+    anime(glowRef.current, {
+      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+      duration: durations.slowest * 4,
+      easing: animeEasings.smoothInOut,
+      loop: true,
+    });
+  }, [prefersReducedMotion]);
+
+  return (
+    <div
+      ref={glowRef}
+      className="absolute inset-0 opacity-30 pointer-events-none"
+      style={{
+        background: "linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent, rgba(0, 255, 0, 0.3), transparent)",
+        backgroundSize: "200% 100%",
+      }}
+    />
+  );
+}
+
+function handleButtonHover(button: HTMLElement) {
+  anime(button, {
+    scale: 1.05,
+    duration: durations.fast,
+    easing: animeEasings.smoothOut,
+  });
+}
+
+function handleButtonLeave(button: HTMLElement) {
+  anime(button, {
+    scale: 1,
+    duration: durations.normal,
+    easing: animeEasings.appleSpring,
+  });
 }
