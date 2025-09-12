@@ -240,38 +240,92 @@ npm run dev
 
 ---
 
-## 🎯 My Recommendation for You
+## 🎯 **TONIGHT'S MISSION: Transform PLOracle → SQL-Ball**
 
-### **Start with SQL-Ball (Contest Winner)**
+### **Your Existing Advantage** 🏆
+- ✅ **Working Supabase football database** with match data
+- ✅ **Authentication system** already built  
+- ✅ **Data visualizations** ready to enhance
+- ✅ **Deployment pipeline** already working
 
-**Why?**
-- Highest impact for your portfolio
-- Contest deadline creates urgency (good for flow)
-- Football data is fun and engaging
-- RAG + visualization = impressive demo
+### **Tonight's Transformation Plan (3-4 hours)**
 
-**How?**
+**Phase 1: Cleanup & Rebrand (45 mins)**
 ```bash
-# 1. Set up the project (5 minutes)
-mkdir -p apps/sql-ball && cd apps/sql-ball
-npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*" --turbo --eslint
+# 1. Navigate to your existing PLOracle project
+cd /path/to/your/ploracle-project
 
-# 2. Copy the specialist config (1 minute)
-cp ../../.claude/agents/sql-ball-specialist.md .claude-agent.md
+# 2. Copy SQL-Ball agent to your project
+cp /Users/tombutler/Repos/MasteringAICoursePortfolio/.claude/agents/sql-ball-specialist.md .claude-agent.md
 
-# 3. Start building (enter flow state)
-npm run dev
+# 3. Copy style guide  
+cp /Users/tombutler/Repos/MasteringAICoursePortfolio/STYLE_GUIDE.md .
 
-# 4. Use the specialist agent
-# In Claude: "Help me build the SQL-Ball contest winner following the specialist config"
+# 4. Use the agent to audit and clean up
+# In Claude: "Using the sql-ball-specialist config, help me audit this PLOracle codebase and remove all prediction functionality, unused dependencies, and rebrand to SQL-Ball"
 ```
 
-### **Your Next 2 Hours**
-1. **15 min**: Project setup + shadcn/ui
-2. **30 min**: Basic RAG architecture with LangChain  
-3. **45 min**: Simple natural language to SQL conversion
-4. **30 min**: Football database schema setup
-5. **You're in flow state and building!**
+**Phase 2: Add RAG System (90 mins)**
+```bash
+# Install LangChain dependencies
+npm install @langchain/core @langchain/openai @langchain/community
+npm install chromadb-default-embed
+
+# Create RAG API route for NL-to-SQL
+# In Claude: "Help me create the RAG system for natural language to SQL conversion using my existing Supabase match database"
+```
+
+**Phase 3: Pattern Discovery Features (60 mins)**
+```bash
+# Transform existing visualizations  
+# In Claude: "Help me transform these prediction visualizations into pattern discovery and unusual statistics displays"
+
+# Add anomaly detection
+# In Claude: "Add statistical anomaly detection features to highlight unusual match results"
+```
+
+**Phase 4: Contest Polish (30 mins)**
+```bash
+# Demo preparation
+# In Claude: "Help me create demo queries and prepare LinkedIn-ready screenshots for the contest"
+```
+
+### **Exact Commands for Tonight**
+
+**Step 1: Setup Agent in Your Project**
+```bash
+# In your PLOracle directory
+curl -o .claude-agent.md https://raw.githubusercontent.com/your-username/MasteringAICoursePortfolio/main/.claude/agents/sql-ball-specialist.md
+curl -o STYLE_GUIDE.md https://raw.githubusercontent.com/your-username/MasteringAICoursePortfolio/main/STYLE_GUIDE.md
+```
+
+**Step 2: Start Transformation**
+```bash
+# Open Claude and paste this exact prompt:
+"I'm using the sql-ball-specialist agent config. I have an existing PLOracle football app with Supabase match database. Help me transform it to SQL-Ball by:
+
+1. Auditing the codebase to remove ALL prediction functionality
+2. Adding RAG system for natural language to SQL conversion  
+3. Transforming to focus on pattern discovery and unusual statistics
+4. Following the specialist config requirements exactly
+
+The existing app has: [describe your current PLOracle structure]
+Database has: matches table with home_team, away_team, home_score, away_score, match_date, season
+
+Ready to start the transformation!"
+```
+
+**Step 3: Use These Exact Phrases for Agent**
+- *"Following the sql-ball-specialist config, help me..."*
+- *"As specified in the agent requirements, I need to..."*
+- *"The specialist config says to focus on pattern discovery, so..."*
+
+### **What You'll Have by Morning** 🌅
+- 🏆 **Contest-winning SQL-Ball** ready for submission
+- 🔍 **Pattern discovery system** that finds unusual statistics  
+- 🧠 **RAG-powered NL-to-SQL** conversion
+- 📊 **Enhanced visualizations** of match data trends
+- 🚀 **LinkedIn-ready demo** and screenshots
 
 ---
 
