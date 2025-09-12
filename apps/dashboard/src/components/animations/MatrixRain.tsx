@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 
 export default function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<any>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
