@@ -6,6 +6,7 @@ import AnimatedHero from "@/components/animations/AnimatedHero";
 import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import TechStackIcon from "@/components/ui/TechStackIcon";
 import { animate as anime, stagger } from 'animejs';
 import { useEffect, useRef } from "react";
 import { animeEasings, durations } from "@/lib/easings";
@@ -67,6 +68,42 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Skills & Technologies Section */}
+        <section className="container mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Skills & Technologies Demonstrated
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+              Expertise in cutting-edge technologies valuable to employers
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {[
+              "Gen AI", "Azure AI Foundry", "RAG pipelines", "Machine Learning", 
+              "LLMs", "Python", "C#", "APIs", "OpenAI", "LangChain",
+              "Frontend Development", "Backend Development", "TypeScript", "React"
+            ].map((skill) => (
+              <div 
+                key={skill} 
+                className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 transition-all duration-500 hover:border-gray-600/70 hover:shadow-2xl hover:shadow-white/5 hover:-translate-y-1"
+              >
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Icon and Text */}
+                <div className="relative flex items-center justify-center">
+                  <TechStackIcon tech={skill} size={24} className="opacity-80 group-hover:opacity-100 transition-opacity duration-300" showTooltip={false} />
+                </div>
+                
+                {/* Subtle highlight bar */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-green-400/0 via-green-400/60 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Animated Contest Banner */}
         <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 py-20">
           <div 
@@ -112,12 +149,20 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "ai-developer-agent",
-    title: "AI Developer Agent",
-    description: "Intelligent code generation and review system with Git integration",
-    week: "Week 1-2",
+    id: "ai-code-generator",
+    title: "AI Code Generator",
+    description: "Natural language to code conversion with multi-language support",
+    week: "Week 1",
     status: "upcoming",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter"],
+  },
+  {
+    id: "git-review-assistant",
+    title: "Git Review Assistant",
+    description: "AI-powered code review system with automated PR feedback",
+    week: "Week 2",
+    status: "upcoming",
+    techStack: ["LangChain", "GitHub API", "FastAPI"],
   },
   {
     id: "rag-chatbot",
@@ -144,12 +189,12 @@ const projects: Project[] = [
     techStack: ["MCP", "GitHub Actions", "Docker"],
   },
   {
-    id: "sql-query-buddy",
-    title: "SQL Query Buddy",
-    description: "NL to SQL conversion with query optimisation and visualisation",
+    id: "sql-ball",
+    title: "SQL-Ball",
+    description: "Football data analytics with natural language queries and AI insights",
     week: "Contest",
     status: "in-progress",
-    techStack: ["LangChain", "ChromaDB", "D3.js"],
+    techStack: ["Supabase", "LangChain", "D3.js"],
   },
   {
     id: "portfolio-dashboard",

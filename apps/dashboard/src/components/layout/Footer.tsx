@@ -28,7 +28,7 @@ export default function Footer() {
               Showcasing cutting-edge AI projects from the &ldquo;Mastering Generative AI & Agents for Developers&rdquo; bootcamp.
             </p>
             <p className="text-gray-500 text-xs mt-4">
-              Built with Next.js, TypeScript, and love from Liverpool, UK 🇬🇧
+              Built with Next.js, TypeScript, Anime.js, and love from Liverpool, UK 🇬🇧
             </p>
           </div>
 
@@ -51,14 +51,6 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/projects/sql-query-buddy"
-                  className="text-gray-400 hover:text-green-400 text-sm transition-colors"
-                >
-                  Contest Entry 🏆
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -83,7 +75,13 @@ export default function Footer() {
               })}
             </div>
             <p className="text-gray-500 text-xs">
-              Tom Butler<br />
+              <Link 
+                href="https://linkedin.com/in/tombutler" 
+                target="_blank"
+                className="hover:text-green-400 transition-colors underline-offset-2 hover:underline"
+              >
+                Tom Butler
+              </Link><br />
               Liverpool, UK<br />
               #CodecademyGenAIBootcamp
             </p>
