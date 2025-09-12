@@ -113,11 +113,11 @@ export default function Home() {
           >
             <ContestGlow />
             <h2 className="text-3xl font-bold mb-4 text-green-400" style={{ opacity: 0 }}>
-              🏆 Contest Entry: SQL Query Buddy
+              🏆 Contest Entry: SQL-Ball
             </h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto" style={{ opacity: 0 }}>
-              Natural language to SQL with AI-powered optimisation, visual query builder, 
-              and real-time performance analysis.
+              Football data analytics with natural language queries, AI-powered insights,
+              and interactive performance visualizations.
             </p>
             <Button 
               className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold transform-gpu"
