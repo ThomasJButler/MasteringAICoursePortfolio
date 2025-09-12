@@ -146,6 +146,13 @@ This style guide ensures consistency across all individual project repositories 
 
 ## 🎭 Animation Standards
 
+⚠️ **IMPORTANT**: Anime.js is ONLY used in the Portfolio Dashboard for showcase purposes. Individual projects should use CSS animations, Framer Motion, or other lightweight animation libraries.
+
+### Animation Library Usage by Project
+- **Portfolio Dashboard**: Anime.js 3.2.2 (showcase/demo purposes)
+- **Individual AI Projects**: CSS animations + Framer Motion (if needed)
+- **Reason**: Keep individual projects lightweight and focused on functionality
+
 ### Timing Functions
 ```css
 /* Ease Functions */
