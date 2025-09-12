@@ -67,6 +67,36 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Skills & Technologies Section */}
+        <section className="container mx-auto px-4 py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+              Skills & Technologies Demonstrated
+            </h2>
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+              This portfolio showcases expertise in cutting-edge technologies valuable to employers
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-6xl mx-auto">
+            {[
+              "Gen AI", "Azure AI Foundry", "RAG pipelines", "Machine Learning", 
+              "LLMs", "Python", "C#", "APIs", "OpenAI", "LangChain",
+              "Frontend Development", "Backend Development", "TypeScript", "React"
+            ].map((skill) => (
+              <div 
+                key={skill} 
+                className="group bg-gray-800/30 hover:bg-gray-800/50 border border-green-500/20 hover:border-green-400/40 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10"
+              >
+                <div className="w-3 h-3 bg-cyan-400 rounded-full mx-auto mb-2 group-hover:bg-green-400 transition-colors duration-300"></div>
+                <span className="text-sm text-gray-300 group-hover:text-white font-medium transition-colors duration-300">
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Animated Contest Banner */}
         <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 py-20">
           <div 

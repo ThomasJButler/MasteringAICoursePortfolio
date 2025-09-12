@@ -15,6 +15,13 @@ const projectDetails = {
     week: "Week 1-2",
     status: "upcoming",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter", "Python", "TypeScript"],
+    learnings: [
+      "Advanced prompt engineering for code generation tasks",
+      "Integration patterns between LLMs and development tools",
+      "AST parsing and manipulation with Tree-sitter",
+      "Building secure AI-powered developer workflows",
+      "Performance optimization for real-time code analysis"
+    ],
     features: [
       "Natural language to code generation",
       "Automated code review with actionable suggestions",
@@ -35,6 +42,13 @@ const projectDetails = {
     week: "Week 3",
     status: "upcoming",
     techStack: ["Pinecone", "OpenAI", "LangChain", "FastAPI", "React"],
+    learnings: [
+      "Vector database design and optimization strategies",
+      "Retrieval-Augmented Generation (RAG) implementation patterns",
+      "Embedding generation and similarity search algorithms",
+      "Document chunking and preprocessing techniques",
+      "Context window management for large documents"
+    ],
     features: [
       "Multi-document ingestion and processing",
       "Semantic search using vector embeddings",
@@ -55,6 +69,13 @@ const projectDetails = {
     week: "Week 4",
     status: "upcoming",
     techStack: ["LangGraph", "Multiple LLMs", "WebSocket", "D3.js", "FastAPI"],
+    learnings: [
+      "Multi-agent system architecture and coordination patterns",
+      "LangGraph workflow orchestration and state management",
+      "Real-time communication between distributed AI agents",
+      "Load balancing and failover strategies for LLM requests",
+      "Visualization of complex agent interaction networks"
+    ],
     features: [
       "Research agent for web searching and data gathering",
       "Code agent for implementation tasks",
@@ -75,6 +96,13 @@ const projectDetails = {
     week: "Week 5",
     status: "upcoming",
     techStack: ["MCP", "GitHub Actions", "Docker", "Node.js", "Python"],
+    learnings: [
+      "Model Context Protocol (MCP) implementation and best practices",
+      "CI/CD pipeline automation with AI-driven optimizations",
+      "Containerization strategies for AI development workflows",
+      "Infrastructure as Code for scalable AI deployments",
+      "Performance monitoring and alerting for production AI systems"
+    ],
     features: [
       "Automated task execution",
       "CI/CD pipeline generation",
@@ -95,6 +123,13 @@ const projectDetails = {
     week: "Contest",
     status: "in-progress",
     techStack: ["LangChain", "ChromaDB", "D3.js", "FastAPI", "PostgreSQL"],
+    learnings: [
+      "Natural language to SQL translation techniques",
+      "Query optimization using AI-powered analysis",
+      "Interactive data visualization with D3.js",
+      "Performance profiling and database tuning strategies",
+      "Multi-dialect SQL compatibility and abstraction layers"
+    ],
     features: [
       "Natural language to SQL conversion",
       "AI-powered query optimization",
@@ -115,6 +150,13 @@ const projectDetails = {
     week: "Ongoing",
     status: "in-progress",
     techStack: ["Next.js 15", "Tailwind CSS", "Anime.js", "Framer Motion", "TypeScript"],
+    learnings: [
+      "Next.js 15 App Router and server-side rendering optimizations",
+      "Advanced CSS animations and performance considerations",
+      "TypeScript strict mode and type safety best practices",
+      "Responsive design patterns for modern web applications",
+      "Web accessibility and inclusive design principles"
+    ],
     features: [
       "Matrix rain animation background",
       "Smooth scroll navigation",
@@ -178,20 +220,22 @@ export default function ProjectDetailPage() {
         {/* Project Header */}
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent hover:from-cyan-400 hover:to-green-400 transition-all duration-500">
               {project.title}
             </h1>
-            <span className={`px-3 py-1 rounded-md text-sm ${statusColors[project.status as keyof typeof statusColors]}`}>
+            <span className={`px-3 py-1 rounded-md text-sm transition-all duration-200 hover:scale-110 ${statusColors[project.status as keyof typeof statusColors]}`}>
               {project.status === "in-progress" ? "In Progress" : project.status === "completed" ? "Completed" : "Upcoming"}
             </span>
           </div>
-          <p className="text-xl text-gray-400">{project.week}</p>
+          <p className="text-xl text-gray-400 hover:text-gray-300 transition-colors duration-200">{project.week}</p>
         </div>
 
         {/* Project Description */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold text-green-400 mb-4">Overview</h2>
-          <p className="text-gray-300 leading-relaxed">{project.fullDescription}</p>
+          <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-6 hover:border-green-500/30 transition-all duration-300">
+            <p className="text-gray-300 leading-relaxed hover:text-gray-200 transition-colors duration-200">{project.fullDescription}</p>
+          </div>
         </div>
 
         {/* Tech Stack */}
@@ -201,9 +245,9 @@ export default function ProjectDetailPage() {
             {project.techStack.map((tech) => (
               <div
                 key={tech}
-                className="flex items-center gap-3 px-4 py-3 bg-gray-800/50 border border-green-500/30 rounded-lg hover:border-green-400/50 transition-all duration-200 hover:bg-gray-800/70"
+                className="group flex items-center gap-3 px-4 py-3 bg-gray-800/50 border border-green-500/30 rounded-lg hover:border-green-400/50 transition-all duration-300 hover:bg-gray-800/70 hover:scale-105 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
               >
-                <TechStackIcon tech={tech} size={24} className="" showTooltip={false} />
+                <TechStackIcon tech={tech} size={24} className="group-hover:scale-110 transition-transform duration-200" showTooltip={false} />
               </div>
             ))}
           </div>
@@ -214,35 +258,36 @@ export default function ProjectDetailPage() {
           <h2 className="text-2xl font-semibold text-green-400 mb-4">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {project.features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <span className="text-green-400 mt-1">▸</span>
-                <span className="text-gray-300">{feature}</span>
+              <div key={index} className="group flex items-start gap-3 p-3 rounded-lg hover:bg-gray-800/30 transition-all duration-200">
+                <span className="text-green-400 mt-1 group-hover:text-cyan-400 transition-colors duration-200">▸</span>
+                <span className="text-gray-300 group-hover:text-white transition-colors duration-200">{feature}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Skills & Technologies Section for Employers */}
+        {/* Learning & Development Section */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold text-green-400 mb-4 flex items-center gap-2">
             <Award className="text-cyan-400" size={24} />
-            Skills & Technologies Demonstrated
+            Learning & Development
           </h2>
-          <div className="bg-gradient-to-r from-gray-800/30 to-gray-900/30 border border-cyan-500/20 rounded-lg p-6">
+          <div className="bg-gradient-to-r from-gray-800/30 to-gray-900/30 border border-cyan-500/20 rounded-lg p-6 hover:border-cyan-400/30 transition-all duration-300">
             <p className="text-gray-300 mb-4 text-sm">
-              This project showcases expertise in cutting-edge technologies valuable to employers:
+              Key learning outcomes and technical insights gained from this project:
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                "Gen AI", "Azure AI Foundry", "RAG pipelines", "Machine Learning",
-                "LLMs", "Python", "C#", "APIs", "OpenAI", "LangChain",
-                "Frontend Development", "Backend Development", "TypeScript", "React"
-              ].map((skill) => (
-                <div key={skill} className="flex items-center gap-2 text-sm">
-                  <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
-                  <span className="text-gray-300">{skill}</span>
+            <div className="grid gap-3">
+              {project.learnings?.map((learning, index) => (
+                <div key={index} className="flex items-start gap-3 group">
+                  <span className="text-green-400 mt-1 group-hover:text-cyan-400 transition-colors duration-200">▸</span>
+                  <span className="text-gray-300 group-hover:text-white transition-colors duration-200">{learning}</span>
                 </div>
-              ))}
+              )) || (
+                <div className="flex items-start gap-3">
+                  <span className="text-green-400 mt-1">▸</span>
+                  <span className="text-gray-300">Learning outcomes will be documented as the project develops</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -250,7 +295,9 @@ export default function ProjectDetailPage() {
         {/* Implementation Status */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold text-green-400 mb-4">Implementation Status</h2>
-          <p className="text-gray-300">{project.implementation}</p>
+          <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-6 hover:border-green-500/30 transition-all duration-300">
+            <p className="text-gray-300">{project.implementation}</p>
+          </div>
         </div>
 
         {/* Action Buttons */}
@@ -258,7 +305,7 @@ export default function ProjectDetailPage() {
           {project.github && (
             <Button
               asChild
-              className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-600"
+              className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20"
             >
               <Link href={project.github} target="_blank">
                 <Github className="mr-2" size={20} />
@@ -269,7 +316,7 @@ export default function ProjectDetailPage() {
           {project.demo && (
             <Button
               asChild
-              className="bg-green-500 hover:bg-green-600 text-black font-semibold"
+              className="bg-green-500 hover:bg-green-600 text-black font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
             >
               <Link href={project.demo} target={project.demo === "/" ? "_self" : "_blank"}>
                 <ExternalLink className="mr-2" size={20} />
