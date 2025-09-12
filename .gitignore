@@ -108,3 +108,5 @@ temp/
 
 # Changeset
 .changeset
+docs/learning/SQLQUERYBUDDY.md
+docs/learning/claude-code-complete-orchestration-guide.md
