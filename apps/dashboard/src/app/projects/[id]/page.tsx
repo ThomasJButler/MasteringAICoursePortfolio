@@ -8,6 +8,7 @@ import MatrixRain from "@/components/animations/MatrixRain";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import TechStackIcon from "@/components/ui/TechStackIcon";
+import ImageGallery from "@/components/ui/ImageGallery";
 
 const projectDetails = {
   "ai-code-generator": {
@@ -33,6 +34,11 @@ const projectDetails = {
       "Design pattern integration",
       "Code quality optimization"
     ],
+    screenshots: {
+      desktop: ["/screenshots/ai-code-generator-desktop-1.jpg", "/screenshots/ai-code-generator-desktop-2.jpg"],
+      mobile: ["/screenshots/ai-code-generator-mobile-1.jpg", "/screenshots/ai-code-generator-mobile-2.jpg"],
+      structure: ["/screenshots/ai-code-generator-architecture.jpg"]
+    },
     implementation: "Coming soon...",
     github: "https://github.com/tombutler/ai-code-generator",
     demo: null
@@ -60,6 +66,11 @@ const projectDetails = {
       "Test coverage analysis",
       "Documentation gap identification"
     ],
+    screenshots: {
+      desktop: ["/screenshots/git-review-assistant-desktop-1.jpg", "/screenshots/git-review-assistant-desktop-2.jpg"],
+      mobile: ["/screenshots/git-review-assistant-mobile-1.jpg"],
+      structure: ["/screenshots/git-review-assistant-workflow.jpg"]
+    },
     implementation: "Coming soon...",
     github: "https://github.com/tombutler/git-review-assistant",
     demo: null
@@ -87,6 +98,11 @@ const projectDetails = {
       "Multi-language document support",
       "Document summarization capabilities"
     ],
+    screenshots: {
+      desktop: ["/screenshots/rag-chatbot-desktop-1.jpg", "/screenshots/rag-chatbot-desktop-2.jpg"],
+      mobile: ["/screenshots/rag-chatbot-mobile-1.jpg", "/screenshots/rag-chatbot-mobile-2.jpg"],
+      structure: ["/screenshots/rag-chatbot-architecture.jpg"]
+    },
     implementation: "Coming soon...",
     github: "https://github.com/tombutler/rag-chatbot",
     demo: null
@@ -114,6 +130,11 @@ const projectDetails = {
       "Agent performance metrics dashboard",
       "Collaborative decision-making algorithms"
     ],
+    screenshots: {
+      desktop: ["/screenshots/multi-agent-system-desktop-1.jpg", "/screenshots/multi-agent-system-desktop-2.jpg"],
+      mobile: ["/screenshots/multi-agent-system-mobile-1.jpg"],
+      structure: ["/screenshots/multi-agent-system-flow.jpg", "/screenshots/multi-agent-system-architecture.jpg"]
+    },
     implementation: "Coming soon...",
     github: "https://github.com/tombutler/multi-agent-system",
     demo: null
@@ -141,42 +162,20 @@ const projectDetails = {
       "Template marketplace integration",
       "Performance benchmarking tools"
     ],
+    screenshots: {
+      desktop: ["/screenshots/workflow-agent-desktop-1.jpg", "/screenshots/workflow-agent-desktop-2.jpg"],
+      mobile: ["/screenshots/workflow-agent-mobile-1.jpg"],
+      structure: ["/screenshots/workflow-agent-pipeline.jpg"]
+    },
     implementation: "Coming soon...",
     github: "https://github.com/tombutler/workflow-agent",
     demo: null
   },
-  "sql-query-buddy": {
-    title: "SQL Query Buddy",
-    fullDescription: "An award-winning natural language to SQL conversion tool with AI-powered optimization. Features a visual query builder and real-time performance analysis for both beginners and experts.",
-    week: "Contest",
-    status: "in-progress",
-    techStack: ["LangChain", "ChromaDB", "D3.js", "FastAPI", "PostgreSQL"],
-    learnings: [
-      "Natural language to SQL translation techniques",
-      "Query optimization using AI-powered analysis",
-      "Interactive data visualization with D3.js",
-      "Performance profiling and database tuning strategies",
-      "Multi-dialect SQL compatibility and abstraction layers"
-    ],
-    features: [
-      "Natural language to SQL conversion",
-      "AI-powered query optimization",
-      "Visual drag-and-drop query builder",
-      "Real-time query execution plans",
-      "Performance simulation and analysis",
-      "Multi-dialect support (PostgreSQL, MySQL, SQLite)",
-      "Query history with performance tracking",
-      "Collaborative query sharing and improvement"
-    ],
-    implementation: "Currently in development. Targeting contest submission deadline.",
-    github: "https://github.com/tombutler/sql-query-buddy",
-    demo: null
-  },
   "sql-ball": {
     title: "SQL-Ball",
-    fullDescription: "An intelligent football data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
-    week: "Bonus",
-    status: "upcoming",
+    fullDescription: "An award-winning football data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
+    week: "Contest",
+    status: "in-progress",
     techStack: ["Supabase", "LangChain", "OpenAI", "D3.js", "React", "PostgreSQL"],
     learnings: [
       "Sports data analytics and statistical modeling",
@@ -195,7 +194,12 @@ const projectDetails = {
       "Fantasy football insights",
       "Historical trend analysis"
     ],
-    implementation: "Coming soon...",
+    screenshots: {
+      desktop: ["/screenshots/sql-ball-desktop-1.jpg", "/screenshots/sql-ball-desktop-2.jpg", "/screenshots/sql-ball-desktop-3.jpg"],
+      mobile: ["/screenshots/sql-ball-mobile-1.jpg", "/screenshots/sql-ball-mobile-2.jpg"],
+      structure: ["/screenshots/sql-ball-architecture.jpg", "/screenshots/sql-ball-data-flow.jpg"]
+    },
+    implementation: "Currently in development. Targeting contest submission deadline.",
     github: "https://github.com/tombutler/sql-ball",
     demo: null
   },
@@ -222,6 +226,11 @@ const projectDetails = {
       "Performance optimized",
       "SEO optimized"
     ],
+    screenshots: {
+      desktop: ["/screenshots/portfolio-dashboard-desktop-1.jpg", "/screenshots/portfolio-dashboard-desktop-2.jpg"],
+      mobile: ["/screenshots/portfolio-dashboard-mobile-1.jpg", "/screenshots/portfolio-dashboard-mobile-2.jpg"],
+      structure: ["/screenshots/portfolio-dashboard-structure.jpg"]
+    },
     implementation: "You're looking at it! This portfolio is built with cutting-edge web technologies.",
     github: "https://github.com/tombutler/MasteringAICoursePortfolio",
     demo: "/"
@@ -320,6 +329,44 @@ export default function ProjectDetailPage() {
             ))}
           </div>
         </div>
+
+        {/* Screenshots Section */}
+        {project.screenshots && (
+          <>
+            {/* Desktop Screenshots */}
+            {project.screenshots.desktop && project.screenshots.desktop.length > 0 && (
+              <div className="mb-12">
+                <h2 className="text-2xl font-semibold text-green-400 mb-4">Desktop Screenshots</h2>
+                <ImageGallery 
+                  images={project.screenshots.desktop} 
+                  title={`${project.title} Desktop`}
+                />
+              </div>
+            )}
+
+            {/* Mobile Screenshots */}
+            {project.screenshots.mobile && project.screenshots.mobile.length > 0 && (
+              <div className="mb-12">
+                <h2 className="text-2xl font-semibold text-green-400 mb-4">Mobile Screenshots</h2>
+                <ImageGallery 
+                  images={project.screenshots.mobile} 
+                  title={`${project.title} Mobile`}
+                />
+              </div>
+            )}
+
+            {/* Architecture/Structure Diagrams */}
+            {project.screenshots.structure && project.screenshots.structure.length > 0 && (
+              <div className="mb-12">
+                <h2 className="text-2xl font-semibold text-green-400 mb-4">Project Structure</h2>
+                <ImageGallery 
+                  images={project.screenshots.structure} 
+                  title={`${project.title} Architecture`}
+                />
+              </div>
+            )}
+          </>
+        )}
 
         {/* Learning & Development Section */}
         <div className="mb-12">

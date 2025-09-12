@@ -198,19 +198,11 @@ const projects: Project[] = [
     techStack: ["MCP", "GitHub Actions", "Docker"],
   },
   {
-    id: "sql-query-buddy",
-    title: "SQL Query Buddy",
-    description: "NL to SQL conversion with query optimisation and visualisation",
-    week: "Contest",
-    status: "in-progress",
-    techStack: ["LangChain", "ChromaDB", "D3.js"],
-  },
-  {
     id: "sql-ball",
     title: "SQL-Ball",
     description: "Football data analytics with natural language queries and AI insights",
-    week: "Bonus",
-    status: "upcoming",
+    week: "Contest",
+    status: "in-progress",
     techStack: ["Supabase", "LangChain", "D3.js"],
   },
   {
