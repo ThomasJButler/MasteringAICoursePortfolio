@@ -87,23 +87,14 @@ export default function Home() {
             ].map((skill) => (
               <div 
                 key={skill} 
-                className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 text-center transition-all duration-500 hover:border-gray-600/70 hover:shadow-2xl hover:shadow-white/5 hover:-translate-y-1"
+                className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 transition-all duration-500 hover:border-gray-600/70 hover:shadow-2xl hover:shadow-white/5 hover:-translate-y-1"
               >
                 {/* Subtle inner glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Icon */}
-                <div className="relative mb-6 flex justify-center">
-                  <div className="p-4 bg-gray-800/50 rounded-full group-hover:bg-gray-700/50 transition-colors duration-300">
-                    <TechStackIcon tech={skill} size={32} className="opacity-80 group-hover:opacity-100 transition-opacity duration-300" showTooltip={false} />
-                  </div>
-                </div>
-                
-                {/* Text */}
-                <div className="relative">
-                  <h3 className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors duration-300 leading-relaxed">
-                    {skill}
-                  </h3>
+                {/* Icon and Text */}
+                <div className="relative flex items-center justify-center">
+                  <TechStackIcon tech={skill} size={24} className="opacity-80 group-hover:opacity-100 transition-opacity duration-300" showTooltip={false} />
                 </div>
                 
                 {/* Subtle highlight bar */}

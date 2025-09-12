@@ -115,10 +115,11 @@ export default function TechStackIcon({ tech, size = 20, className = "", showToo
 
   return (
     <div 
-      className={`inline-flex items-center justify-center transition-all duration-200 hover:scale-110 ${className}`}
+      className={`inline-flex items-center gap-2 transition-all duration-200 hover:scale-110 ${className}`}
       title={showTooltip ? label : undefined}
     >
-      <Icon width={size} height={size} className={`${color} drop-shadow-sm`} />
+      <Icon width={size} height={size} className={`${color} drop-shadow-sm flex-shrink-0`} />
+      <span className="text-sm text-gray-300 font-medium">{tech}</span>
     </div>
   );
 }
