@@ -29,7 +29,7 @@ Compare responses from multiple AI models (GPT-4, Claude 3.5, Gemini) side-by-si
 
 ---
 
-#### ⚽ SQL-Ball (Contest Winner)
+#### ⚽ SQL-Ball 
 **Status: Completed**
 Football data analytics platform with natural language queries, AI-powered insights, and interactive performance visualizations.
 
@@ -147,21 +147,6 @@ While this is a personal portfolio project, feedback and suggestions are welcome
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🚀 Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/ThomasJButler/MasteringAICoursePortfolio.git
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Visit http://localhost:3000
-```
-
 ## 📊 Project Stats
 
 - **Duration:** 6 weeks (August - September 2025)
@@ -173,7 +158,7 @@ npm run dev
 ## 👨‍💻 Author
 
 **Tom Butler**
-📍 Liverpool, UK
+📍 York, UK
 🌐 [Portfolio](https://thomasjbutler.me)
 💼 [LinkedIn](https://linkedin.com/in/thomasjbutler)
 
