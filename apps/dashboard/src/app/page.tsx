@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import OptimizedMatrixRain from "@/components/animations/OptimizedMatrixRain";
+import MatrixRain from "@/components/animations/MatrixRain";
 import AnimatedHero from "@/components/animations/AnimatedHero";
 import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
@@ -44,8 +44,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Optimized Matrix Rain Background Effect */}
-      <OptimizedMatrixRain />
+      {/* Matrix Rain Background Effect */}
+      <MatrixRain />
       
       {/* Navigation */}
       <Navigation />
