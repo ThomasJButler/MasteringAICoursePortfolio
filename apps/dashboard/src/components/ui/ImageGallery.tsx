@@ -11,6 +11,7 @@ interface ImageGalleryProps {
   images: string[];
   title: string;
   className?: string;
+  customCaptions?: string[];
 }
 
 interface ImageItem {
@@ -19,18 +20,29 @@ interface ImageItem {
   title?: string;
 }
 
-export default function ImageGallery({ images, title, className = "" }: ImageGalleryProps) {
+export default function ImageGallery({ images, title, className = "", customCaptions }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   // Convert string array to ImageItem array
-  const imageItems: ImageItem[] = images.map((src, index) => ({
-    src,
-    alt: `${title} screenshot ${index + 1}`,
-    title: `${title} - Screenshot ${index + 1}`
-  }));
+  const imageItems: ImageItem[] = images.map((src, index) => {
+    // Handle placeholder text for coming soon screenshots
+    if (typeof src === 'string' && src.includes('will be added')) {
+      return {
+        src: '', // Empty src for placeholder
+        alt: src,
+        title: src
+      };
+    }
+
+    return {
+      src,
+      alt: customCaptions?.[index] || `${title} screenshot ${index + 1}`,
+      title: customCaptions?.[index] || `${title} - Screenshot ${index + 1}`
+    };
+  });
 
   useEffect(() => {
     if (!prefersReducedMotion && galleryRef.current) {
@@ -108,14 +120,38 @@ export default function ImageGallery({ images, title, className = "" }: ImageGal
             onClick={() => openLightbox(index)}
             style={{ opacity: 0 }}
           >
-            <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center">
-              {/* Placeholder for now - in real implementation, would be actual images */}
-              <div className="text-center">
-                <Maximize2 size={32} className="mx-auto mb-2 text-gray-400 group-hover:text-green-400 transition-colors" />
-                <p className="text-sm text-gray-400 group-hover:text-green-400 transition-colors">
-                  Screenshot {index + 1}
-                </p>
-              </div>
+            <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center overflow-hidden">
+              {image.src ? (
+                <>
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const placeholder = target.nextElementSibling as HTMLElement;
+                      if (placeholder) placeholder.style.display = 'flex';
+                    }}
+                  />
+                  <div className="hidden text-center items-center justify-center w-full h-full">
+                    <div>
+                      <Maximize2 size={32} className="mx-auto mb-2 text-gray-400 group-hover:text-green-400 transition-colors" />
+                      <p className="text-sm text-gray-400 group-hover:text-green-400 transition-colors">
+                        {image.title}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center">
+                  <Maximize2 size={32} className="mx-auto mb-2 text-gray-400 group-hover:text-green-400 transition-colors" />
+                  <p className="text-sm text-gray-400 group-hover:text-green-400 transition-colors px-4">
+                    {image.title}
+                  </p>
+                </div>
+              )}
             </div>
             
             {/* Hover overlay */}
@@ -174,17 +210,56 @@ export default function ImageGallery({ images, title, className = "" }: ImageGal
 
                 {/* Main image display */}
                 <div className="bg-gray-900/50 border border-gray-700/50 rounded-xl overflow-hidden">
-                  <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center">
-                    {/* Placeholder for now - in real implementation, would be actual image */}
-                    <div className="text-center">
-                      <Maximize2 size={64} className="mx-auto mb-4 text-gray-400" />
-                      <h3 className="text-xl font-semibold text-white mb-2">
-                        {imageItems[selectedImage].title}
-                      </h3>
-                      <p className="text-gray-400">
-                        Image {selectedImage + 1} of {imageItems.length}
-                      </p>
-                    </div>
+                  <div className="relative">
+                    {imageItems[selectedImage].src ? (
+                      <>
+                        <img
+                          src={imageItems[selectedImage].src}
+                          alt={imageItems[selectedImage].alt}
+                          className="w-full h-auto max-h-[80vh] object-contain"
+                          onError={(e) => {
+                            // Fallback to placeholder if image fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const placeholder = target.nextElementSibling as HTMLElement;
+                            if (placeholder) placeholder.style.display = 'flex';
+                          }}
+                        />
+                        <div className="hidden aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 items-center justify-center">
+                          <div className="text-center">
+                            <Maximize2 size={64} className="mx-auto mb-4 text-gray-400" />
+                            <h3 className="text-xl font-semibold text-white mb-2">
+                              {imageItems[selectedImage].title}
+                            </h3>
+                            <p className="text-gray-400">
+                              Image {selectedImage + 1} of {imageItems.length}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Image title overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <h3 className="text-lg font-semibold text-white mb-1">
+                            {imageItems[selectedImage].title}
+                          </h3>
+                          <p className="text-gray-300 text-sm">
+                            Image {selectedImage + 1} of {imageItems.length}
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center">
+                        <div className="text-center">
+                          <Maximize2 size={64} className="mx-auto mb-4 text-gray-400" />
+                          <h3 className="text-xl font-semibold text-white mb-2">
+                            {imageItems[selectedImage].title}
+                          </h3>
+                          <p className="text-gray-400">
+                            Image {selectedImage + 1} of {imageItems.length}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 

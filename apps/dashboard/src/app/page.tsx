@@ -55,14 +55,9 @@ export default function Home() {
         {/* Animated Hero Section */}
         <AnimatedHero />
 
-        {/* Course Stats Section - MOVED TO TOP */}
-        <CourseStatsSection />
-
         {/* Main Projects Section */}
-        <section id="projects" className="container mx-auto px-4 py-10">
-          <h2 className="text-4xl font-bold text-center mb-12 text-green-400">
-            Main Projects
-          </h2>
+        <section id="projects" className="container mx-auto px-4 py-6">
+          <MainProjectsHeading />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
             {mainProjects.map((project, index) => (
               <AnimatedProjectCard
@@ -74,12 +69,7 @@ export default function Home() {
           </div>
 
           {/* Projects in Development Section */}
-          <h2 className="text-4xl font-bold text-center mb-4 text-cyan-400">
-            Projects in Development
-          </h2>
-          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-            Exciting projects coming soon! Each project is being carefully crafted to showcase advanced AI capabilities.
-          </p>
+          <ProjectsInDevelopmentHeading />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectsInDevelopment.map((project, index) => (
               <AnimatedProjectCard
@@ -93,14 +83,7 @@ export default function Home() {
 
         {/* Skills & Technologies Section */}
         <section className="container mx-auto px-4 py-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Skills & Technologies Demonstrated
-            </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              Expertise in cutting-edge technologies valuable to employers
-            </p>
-          </div>
+          <SkillsAndTechHeading />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {[
@@ -126,6 +109,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Course Stats Section - MOVED HERE */}
+        <CourseStatsSection />
 
         {/* Learning Journey Section - NEW */}
         <LearningJourneySection />
@@ -193,10 +179,10 @@ const mainProjects: Project[] = [
     id: "sql-ball",
     title: "SQL-Ball",
     description: "Football data analytics with natural language queries and AI insights",
-    week: "Contest Winner",
+    week: "Final Project",
     status: "completed",
     techStack: ["Supabase", "LangChain", "React", 'OpenAI', 'PostGresSQL'],
-    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758033747/SQL-Ball_bhd9bj.png",
+    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/generatedsql_yclpkb.png",
   },
 ];
 
@@ -238,7 +224,7 @@ const projectsInDevelopment: Project[] = [
     week: "Week 4",
     status: "in-progress",
     techStack: ["LangGraph", "Multiple LLMs", "WebSocket"],
-    progress: 0,
+    progress: 5,
     eta: "October 5th, 2025",
   },
   {
@@ -248,7 +234,7 @@ const projectsInDevelopment: Project[] = [
     week: "Week 5",
     status: "in-progress",
     techStack: ["MCP", "GitHub Actions", "Docker"],
-    progress: 0,
+    progress: 5,
     eta: "October 12th, 2025",
   },
   {
@@ -518,5 +504,141 @@ function LearningJourneySection() {
       </div>
 
     </section>
+  );
+}
+
+function MainProjectsHeading() {
+  const [headerRef, isVisible] = useIntersectionObserver<HTMLHeadingElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (isVisible && !prefersReducedMotion && headerRef.current) {
+      anime(headerRef.current, {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: durations.normal,
+        delay: 300,
+        easing: animeEasings.smoothOut,
+      });
+    }
+  }, [isVisible, prefersReducedMotion]);
+
+  return (
+    <h2
+      ref={headerRef}
+      className="text-4xl font-bold text-center mb-12 text-green-400 hidden sm:block"
+      style={{ opacity: 0 }}
+    >
+      Main Projects
+    </h2>
+  );
+}
+
+function ProjectsInDevelopmentHeading() {
+  const [headerRef, isVisible] = useIntersectionObserver<HTMLDivElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (isVisible && !prefersReducedMotion) {
+      if (titleRef.current) {
+        anime(titleRef.current, {
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: durations.normal,
+          delay: 300,
+          easing: animeEasings.smoothOut,
+        });
+      }
+
+      if (descRef.current) {
+        anime(descRef.current, {
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: durations.normal,
+          delay: 450,
+          easing: animeEasings.smoothOut,
+        });
+      }
+    }
+  }, [isVisible, prefersReducedMotion]);
+
+  return (
+    <div ref={headerRef}>
+      <h2
+        ref={titleRef}
+        className="text-4xl font-bold text-center mb-4 text-cyan-400"
+        style={{ opacity: 0 }}
+      >
+        Projects in Development
+      </h2>
+      <p
+        ref={descRef}
+        className="text-center text-gray-400 mb-12 max-w-2xl mx-auto"
+        style={{ opacity: 0 }}
+      >
+        Exciting projects coming soon! Each project is being carefully crafted to showcase advanced AI capabilities.
+      </p>
+    </div>
+  );
+}
+
+function SkillsAndTechHeading() {
+  const [headerRef, isVisible] = useIntersectionObserver<HTMLDivElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (isVisible && !prefersReducedMotion) {
+      if (titleRef.current) {
+        anime(titleRef.current, {
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: durations.normal,
+          delay: 300,
+          easing: animeEasings.smoothOut,
+        });
+      }
+
+      if (descRef.current) {
+        anime(descRef.current, {
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: durations.normal,
+          delay: 450,
+          easing: animeEasings.smoothOut,
+        });
+      }
+    }
+  }, [isVisible, prefersReducedMotion]);
+
+  return (
+    <div ref={headerRef} className="text-center mb-16">
+      <h2
+        ref={titleRef}
+        className="text-4xl font-bold text-white mb-4"
+        style={{ opacity: 0 }}
+      >
+        Skills & Technologies Demonstrated
+      </h2>
+      <p
+        ref={descRef}
+        className="text-gray-400 text-lg max-w-3xl mx-auto"
+        style={{ opacity: 0 }}
+      >
+        Expertise in cutting-edge technologies valuable to employers
+      </p>
+    </div>
   );
 }

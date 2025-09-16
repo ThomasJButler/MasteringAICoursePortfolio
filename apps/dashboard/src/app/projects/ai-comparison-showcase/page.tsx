@@ -6,11 +6,16 @@ import { ArrowLeft, Github, ExternalLink, Code2, Sparkles, Zap } from "lucide-re
 import { useEffect, useRef } from "react";
 import { animate as anime, stagger } from 'animejs';
 import { animeEasings, durations } from "@/lib/easings";
+import ImageGallery from "@/components/ui/ImageGallery";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
+import MatrixRain from "@/components/animations/MatrixRain";
 
 export default function AIComparisonShowcasePage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Animate header
@@ -44,14 +49,33 @@ export default function AIComparisonShowcasePage() {
         easing: animeEasings.appleElastic,
       });
     }
+
+    // Animate gallery
+    if (galleryRef.current) {
+      anime(galleryRef.current, {
+        opacity: [0, 1],
+        translateY: [30, 0],
+        duration: durations.normal,
+        delay: 600,
+        easing: animeEasings.smoothOut,
+      });
+    }
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Matrix Rain Background Effect */}
+      <MatrixRain />
+
+      {/* Navigation */}
+      <Navigation />
+
+      {/* Main Content */}
+      <main className="relative z-10">
+        <div className="container mx-auto px-4 py-32">
         {/* Back Button */}
         <Link href="/">
-          <Button variant="ghost" className="mb-8 text-gray-400 hover:text-green-400">
+          <Button variant="ghost" className="mb-8 text-gray-400 hover:text-black hover:bg-green-400/20 border border-transparent hover:border-green-400/50">
             <ArrowLeft className="mr-2" size={16} />
             Back to Portfolio
           </Button>
@@ -196,6 +220,32 @@ export default function AIComparisonShowcasePage() {
           </div>
         </div>
 
+        {/* Project Screenshots */}
+        <div ref={galleryRef} className="mb-12" style={{ opacity: 0 }}>
+          <h2 className="text-3xl font-semibold text-center text-white mb-8">
+            Project Screenshots
+          </h2>
+          <ImageGallery
+            images={[
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/buildmodel_bbmlst.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053562/aicodeoutput_l0bp9d.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053563/aicompare_wnz39e.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758029930/particleuniverseaicomparison_kydtbd.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1737693677/Usage_Patterns_iw5j6a.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1737694764/python_projects_cxbrnj.png"
+            ]}
+            title="AI Comparison Showcase"
+            customCaptions={[
+              "Building AI Model Integration",
+              "AI Code Output Display",
+              "AI Model Comparison Interface",
+              "Particle Universe Visualization",
+              "Usage Patterns Analytics",
+              "Python Projects Dashboard"
+            ]}
+          />
+        </div>
+
         {/* Implementation Highlights */}
         <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 mb-12">
           <h2 className="text-3xl font-semibold text-green-400 mb-6 text-center">
@@ -256,7 +306,11 @@ export default function AIComparisonShowcasePage() {
             </Link>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

@@ -35,10 +35,19 @@ const projectDetails = {
       "Code quality optimization"
     ],
     screenshots: {
-      desktop: ["/screenshots/ai-code-generator-desktop-1.jpg", "/screenshots/ai-code-generator-desktop-2.jpg"],
-      mobile: ["/screenshots/ai-code-generator-mobile-1.jpg", "/screenshots/ai-code-generator-mobile-2.jpg"],
-      structure: ["/screenshots/ai-code-generator-architecture.jpg"]
+      desktop: ["Desktop screenshots will be added next week"],
+      mobile: ["Mobile screenshots will be added next week"],
+      structure: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053567/codegeneratorfrontend_vlbd6x.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053565/codegeneratorbackend2_bvtakw.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053564/codegeneratorbackend_c54fgp.png"
+      ]
     },
+    structureCaptions: [
+      "Frontend Application Flow",
+      "Backend API Architecture",
+      "Code Generation Pipeline"
+    ],
     implementation: "Coming soon...",
     github: "https://github.com/ThomasJButler/ai-code-generator",
     demo: null 
@@ -173,7 +182,7 @@ const projectDetails = {
   },
   "sql-ball": {
     title: "SQL-Ball",
-    fullDescription: "An award-winning football data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
+    fullDescription: "A data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
     week: "Contest",
     status: "in-progress",
     techStack: ["Supabase", "LangChain", "OpenAI", "D3.js", "React", "PostgreSQL"],
@@ -195,10 +204,43 @@ const projectDetails = {
       "Historical trend analysis"
     ],
     screenshots: {
-      desktop: ["/screenshots/sql-ball-desktop-1.jpg", "/screenshots/sql-ball-desktop-2.jpg", "/screenshots/sql-ball-desktop-3.jpg"],
-      mobile: ["/screenshots/sql-ball-mobile-1.jpg", "/screenshots/sql-ball-mobile-2.jpg"],
-      structure: ["/screenshots/sql-ball-architecture.jpg", "/screenshots/sql-ball-data-flow.jpg"]
+      desktop: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053634/SQLballdesktop_kmxlox.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053633/sqlballbuilderprompt_xgxxvu.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053631/sqlball_yqwjsp.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053634/sqlreturnedata_ltwuep.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053631/SQL-Ball_zd6q2p.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053628/aiassistantlivecalculation_lv3n0h.png"
+      ],
+      mobile: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053633/sqlballmobile_bwzffy.png"
+      ],
+      structure: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053567/sqlballbackend_lvbhat.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053568/sqlballfrontend_mgs5i6.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053568/sqlballragsupabase_q35xlz.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053567/sqlballflow_wjjtep.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053564/sqlballapitosupabase_kd8dml.png"
+      ]
     },
+    desktopCaptions: [
+      "SQL-Ball Main Dashboard",
+      "SQL Builder Prompt Interface",
+      "Interactive SQL Ball Interface",
+      "SQL Query Results Display",
+      "Football Analytics Dashboard",
+      "AI Assistant Live Calculations"
+    ],
+    mobileCaptions: [
+      "Mobile Responsive Design"
+    ],
+    structureCaptions: [
+      "Backend Architecture",
+      "Frontend Architecture",
+      "RAG Flow with Supabase",
+      "Query Processing Flow",
+      "API to Supabase Integration"
+    ],
     implementation: "Currently in development. Targeting contest submission deadline.",
     github: "https://github.com/ThomasJButler/sql-ball",
     demo: null
@@ -227,10 +269,33 @@ const projectDetails = {
       "SEO optimized"
     ],
     screenshots: {
-      desktop: ["/screenshots/portfolio-dashboard-desktop-1.jpg", "/screenshots/portfolio-dashboard-desktop-2.jpg"],
-      mobile: ["/screenshots/portfolio-dashboard-mobile-1.jpg", "/screenshots/portfolio-dashboard-mobile-2.jpg"],
-      structure: ["/screenshots/portfolio-dashboard-structure.jpg"]
+      desktop: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053628/aicourseportfolio_pejlr2.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758055736/dashboardlearningjourney_fuypxr.png"
+      ],
+      mobile: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053628/aidashboardmobile_phjbmx.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053627/aicoursemobilefeatures_bvmcto.png"
+      ],
+      structure: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053563/dashboardeffects_itxmob.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053561/aidashboardfrontend_a3ox6v.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053561/aidashboardimages_uqxnkm.png"
+      ]
     },
+    desktopCaptions: [
+      "AI Course Portfolio - Main Dashboard",
+      "Learning Journey Section"
+    ],
+    mobileCaptions: [
+      "Mobile Responsive Design",
+      "Mobile Navigation & Features"
+    ],
+    structureCaptions: [
+      "Matrix Effects & Animations",
+      "Next.js Frontend Architecture",
+      "Anime.js Implementation"
+    ],
     implementation: "You're looking at it! This portfolio is built with cutting-edge web technologies.",
     github: "https://github.com/ThomasJButler/MasteringAICoursePortfolio",
     demo: "/"
@@ -275,7 +340,7 @@ export default function ProjectDetailPage() {
         <Button
           onClick={() => router.push("/")}
           variant="ghost"
-          className="mb-8 text-gray-400 hover:text-green-400"
+          className="mb-8 text-gray-400 hover:text-black hover:bg-green-400/20 border border-transparent hover:border-green-400/50"
         >
           <ArrowLeft className="mr-2" size={20} />
           Back to Projects
@@ -337,9 +402,10 @@ export default function ProjectDetailPage() {
             {project.screenshots.desktop && project.screenshots.desktop.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-2xl font-semibold text-green-400 mb-4">Desktop Screenshots</h2>
-                <ImageGallery 
-                  images={project.screenshots.desktop} 
+                <ImageGallery
+                  images={project.screenshots.desktop}
                   title={`${project.title} Desktop`}
+                  customCaptions={(project as any).desktopCaptions}
                 />
               </div>
             )}
@@ -348,9 +414,10 @@ export default function ProjectDetailPage() {
             {project.screenshots.mobile && project.screenshots.mobile.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-2xl font-semibold text-green-400 mb-4">Mobile Screenshots</h2>
-                <ImageGallery 
-                  images={project.screenshots.mobile} 
+                <ImageGallery
+                  images={project.screenshots.mobile}
                   title={`${project.title} Mobile`}
+                  customCaptions={(project as any).mobileCaptions}
                 />
               </div>
             )}
@@ -359,9 +426,10 @@ export default function ProjectDetailPage() {
             {project.screenshots.structure && project.screenshots.structure.length > 0 && (
               <div className="mb-12">
                 <h2 className="text-2xl font-semibold text-green-400 mb-4">Project Structure</h2>
-                <ImageGallery 
-                  images={project.screenshots.structure} 
+                <ImageGallery
+                  images={project.screenshots.structure}
                   title={`${project.title} Architecture`}
+                  customCaptions={(project as any).structureCaptions}
                 />
               </div>
             )}
