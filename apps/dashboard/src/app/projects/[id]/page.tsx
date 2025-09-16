@@ -40,8 +40,8 @@ const projectDetails = {
       structure: ["/screenshots/ai-code-generator-architecture.jpg"]
     },
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/ai-code-generator",
-    demo: null
+    github: "https://github.com/ThomasJButler/ai-code-generator",
+    demo: null 
   },
   "git-review-assistant": {
     title: "Git Review Assistant",
@@ -72,7 +72,7 @@ const projectDetails = {
       structure: ["/screenshots/git-review-assistant-workflow.jpg"]
     },
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/git-review-assistant",
+    github: "https://github.com/ThomasJButler/git-review-assistant",
     demo: null
   },
   "rag-chatbot": {
@@ -104,7 +104,7 @@ const projectDetails = {
       structure: ["/screenshots/rag-chatbot-architecture.jpg"]
     },
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/rag-chatbot",
+    github: "https://github.com/ThomasJButler/rag-chatbot",
     demo: null
   },
   "multi-agent-system": {
@@ -136,7 +136,7 @@ const projectDetails = {
       structure: ["/screenshots/multi-agent-system-flow.jpg", "/screenshots/multi-agent-system-architecture.jpg"]
     },
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/multi-agent-system",
+    github: "https://github.com/ThomasJButler/multi-agent-system",
     demo: null
   },
   "workflow-agent": {
@@ -168,7 +168,7 @@ const projectDetails = {
       structure: ["/screenshots/workflow-agent-pipeline.jpg"]
     },
     implementation: "Coming soon...",
-    github: "https://github.com/tombutler/workflow-agent",
+    github: "https://github.com/ThomasJButler/workflow-agent",
     demo: null
   },
   "sql-ball": {
@@ -200,7 +200,7 @@ const projectDetails = {
       structure: ["/screenshots/sql-ball-architecture.jpg", "/screenshots/sql-ball-data-flow.jpg"]
     },
     implementation: "Currently in development. Targeting contest submission deadline.",
-    github: "https://github.com/tombutler/sql-ball",
+    github: "https://github.com/ThomasJButler/sql-ball",
     demo: null
   },
   "portfolio-dashboard": {
@@ -232,7 +232,7 @@ const projectDetails = {
       structure: ["/screenshots/portfolio-dashboard-structure.jpg"]
     },
     implementation: "You're looking at it! This portfolio is built with cutting-edge web technologies.",
-    github: "https://github.com/tombutler/MasteringAICoursePortfolio",
+    github: "https://github.com/ThomasJButler/MasteringAICoursePortfolio",
     demo: "/"
   }
 };

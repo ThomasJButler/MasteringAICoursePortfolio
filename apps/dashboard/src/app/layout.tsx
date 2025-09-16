@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "AI Course Portfolio | Tom Butler",
   description: "Showcasing cutting-edge AI projects from the Mastering Generative AI & Agents for Developers bootcamp. Features LangChain, RAG, Multi-Agent Systems, and more.",
   keywords: "AI, Machine Learning, LangChain, RAG, Multi-Agent Systems, GPT-4, Portfolio, Codecademy",
-  authors: [{ name: "Tom Butler", url: "https://github.com/tombutler" }],
+  authors: [{ name: "Tom Butler", url: "https://github.com/ThomasJButler" }],
   openGraph: {
     title: "AI Course Portfolio | Tom Butler",
     description: "Explore 6 cutting-edge AI projects showcasing mastery of modern AI development",
