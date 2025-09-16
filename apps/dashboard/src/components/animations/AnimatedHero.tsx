@@ -249,7 +249,7 @@ export default function AnimatedHero() {
       
       {/* Certificate Button */}
       <div className="mt-6">
-        <Link href="https://www.linkedin.com/in/thomasbutleruk/" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.codecademy.com/bootcamps/ai-1/certificates/61bbd81425580b633fee49f6" target="_blank" rel="noopener noreferrer">
           <Button
             variant="ghost"
             className="text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/50 transform-gpu"

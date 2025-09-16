@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import OptimizedMatrixRain from "@/components/animations/OptimizedMatrixRain";
+import MatrixRain from "@/components/animations/MatrixRain";
 import AnimatedHero from "@/components/animations/AnimatedHero";
 import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
@@ -44,8 +44,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Optimized Matrix Rain Background Effect */}
-      <OptimizedMatrixRain />
+      {/* Matrix Rain Background Effect */}
+      <MatrixRain />
       
       {/* Navigation */}
       <Navigation />
@@ -187,7 +187,7 @@ const mainProjects: Project[] = [
     week: "Featured",
     status: "completed",
     techStack: ["Next.js", "TypeScript", "Multiple AI APIs"],
-    image: "placeholder",
+    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1754529216/aicomparison_xoherd.png",
   },
   {
     id: "sql-ball",
@@ -195,8 +195,8 @@ const mainProjects: Project[] = [
     description: "Football data analytics with natural language queries and AI insights",
     week: "Contest Winner",
     status: "completed",
-    techStack: ["Supabase", "LangChain", "D3.js"],
-    image: "placeholder",
+    techStack: ["Supabase", "LangChain", "React", 'OpenAI', 'PostGresSQL'],
+    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758033747/SQL-Ball_bhd9bj.png",
   },
 ];
 
@@ -208,7 +208,7 @@ const projectsInDevelopment: Project[] = [
     week: "Week 1",
     status: "in-progress",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter"],
-    progress: 75,
+    progress: 95,
     eta: "September 20th, 2025",
   },
   {
@@ -218,7 +218,7 @@ const projectsInDevelopment: Project[] = [
     week: "Week 2",
     status: "in-progress",
     techStack: ["LangChain", "GitHub API", "FastAPI"],
-    progress: 60,
+    progress: 90,
     eta: "September 24th, 2025",
   },
   {
@@ -228,8 +228,8 @@ const projectsInDevelopment: Project[] = [
     week: "Week 3",
     status: "in-progress",
     techStack: ["Pinecone", "OpenAI", "LangChain"],
-    progress: 45,
-    eta: "September 27th, 2025",
+    progress: 70,
+    eta: "September 30th, 2025",
   },
   {
     id: "multi-agent-system",
@@ -238,8 +238,8 @@ const projectsInDevelopment: Project[] = [
     week: "Week 4",
     status: "in-progress",
     techStack: ["LangGraph", "Multiple LLMs", "WebSocket"],
-    progress: 30,
-    eta: "October 2nd, 2025",
+    progress: 0,
+    eta: "October 5th, 2025",
   },
   {
     id: "workflow-agent",
@@ -248,8 +248,18 @@ const projectsInDevelopment: Project[] = [
     week: "Week 5",
     status: "in-progress",
     techStack: ["MCP", "GitHub Actions", "Docker"],
-    progress: 55,
-    eta: "October 5th, 2025",
+    progress: 0,
+    eta: "October 12th, 2025",
+  },
+  {
+    id: "portfolio-dashboard",
+    title: "Portfolio Dashboard",
+    description: "Interactive AI course portfolio showcasing projects and learning journey",
+    week: "Meta Project",
+    status: "in-progress",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Anime.js"],
+    progress: 50,
+    eta: "October 12th, 2025",
   },
 ];
 

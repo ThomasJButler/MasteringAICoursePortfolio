@@ -1,11 +1,95 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { animate as anime, createTimeline, createTimer, Timeline, Target } from 'animejs';
+import { animeEasings, durations } from "@/lib/easings";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<Timeline | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const createFloatingLayers = useCallback(() => {
+    if (!particlesRef.current || prefersReducedMotion) return;
+
+    const layers = 3;
+    const particlesPerLayer = 5;
+
+    for (let layer = 0; layer < layers; layer++) {
+      const layerDiv = document.createElement("div");
+      layerDiv.className = "matrix-layer";
+      layerDiv.style.position = "absolute";
+      layerDiv.style.inset = "0";
+      layerDiv.style.pointerEvents = "none";
+      particlesRef.current.appendChild(layerDiv);
+
+      for (let i = 0; i < particlesPerLayer; i++) {
+        const particle = document.createElement("div");
+        particle.className = "matrix-particle";
+        particle.style.position = "absolute";
+        particle.style.width = "2px";
+        particle.style.height = `${Math.random() * 100 + 50}px`;
+        particle.style.background = `linear-gradient(to bottom, transparent, rgba(0, 255, 0, ${0.1 + layer * 0.1}), transparent)`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = "-100px";
+        particle.style.filter = `blur(${layer}px)`;
+        layerDiv.appendChild(particle);
+
+        anime(particle, {
+        translateY: window.innerHeight + 200,
+          duration: durations.slowest * (3 + layer),
+          delay: Math.random() * durations.slowest * 2,
+          easing: "linear",
+          loop: true
+      });
+
+        anime(particle, {
+        opacity: [0, 0.5, 0],
+          duration: durations.slowest * (3 + layer),
+          delay: Math.random() * durations.slowest * 2,
+          ease: animeEasings.smoothInOut,
+          loop: true
+      });
+      }
+
+      anime(layerDiv, {
+        translateZ: `${layer * -100}px`,
+        duration: 0
+      });
+    }
+  }, [prefersReducedMotion]);
+
+  const animateCanvasOpacity = useCallback(() => {
+    if (!canvasRef.current || prefersReducedMotion) return;
+
+    animationRef.current = createTimeline({
+      loop: true,
+    });
+
+    animationRef.current
+      .add(
+        canvasRef.current,
+        {
+          opacity: [0.3, 0.5],
+          duration: durations.slowest * 2,
+          ease: animeEasings.smoothInOut,
+        }
+      )
+      .add(
+        canvasRef.current,
+        {
+          opacity: [0.5, 0.3],
+          duration: durations.slowest * 2,
+          ease: animeEasings.smoothInOut,
+        }
+      );
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -27,41 +111,29 @@ export default function MatrixRain() {
     const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
     const charArray = matrixChars.split("");
 
-    let frameCount = 0;
-    const drawMatrix = () => {
-      frameCount++;
-      
-      // Only draw every 3rd frame for subtlety and performance
-      if (frameCount % 3 !== 0) {
-        requestAnimationFrame(drawMatrix);
-        return;
-      }
+    ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
-      // Subtle fade effect - very light overlay for trailing effect
+    const drawMatrix = () => {
       ctx.fillStyle = "rgba(10, 10, 10, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Matrix green with low opacity for subtlety
-      ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
-      ctx.font = `${fontSize}px JetBrains Mono, monospace`;
-
       for (let i = 0; i < drops.length; i++) {
-        // Randomly skip some columns for sparseness
         if (Math.random() > 0.975) {
           const text = charArray[Math.floor(Math.random() * charArray.length)];
           const x = i * fontSize;
           const y = drops[i] * fontSize;
 
-          // Brighter green for the leading character
-          if (Math.random() > 0.9) {
-            ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
-            ctx.fillText(text, x, y);
-            ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
+          const intensity = Math.random();
+          if (intensity > 0.9) {
+            ctx.fillStyle = "rgba(0, 255, 255, 0.8)";
+          } else if (intensity > 0.7) {
+            ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
           } else {
-            ctx.fillText(text, x, y);
+            ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
           }
 
-          // Reset drop randomly after falling off screen
+          ctx.fillText(text, x, y);
+
           if (y > canvas.height && Math.random() > 0.95) {
             drops[i] = 0;
           }
@@ -69,38 +141,74 @@ export default function MatrixRain() {
           drops[i]++;
         }
       }
-
-      requestAnimationFrame(drawMatrix);
     };
 
-    // Start animation
-    drawMatrix();
+    const matrixAnimation = createTimer({
+      duration: Infinity,
+      onUpdate: drawMatrix,
+      frameRate: 30
+    });
 
-    // CSS-based pulsing effect instead of anime.js
-    let opacity = 0.4;
-    let increasing = true;
-    const pulseAnimation = setInterval(() => {
-      if (increasing) {
-        opacity += 0.01;
-        if (opacity >= 0.5) increasing = false;
-      } else {
-        opacity -= 0.01;
-        if (opacity <= 0.3) increasing = true;
-      }
-      canvas.style.opacity = opacity.toString();
-    }, 50);
+    createFloatingLayers();
+    animateCanvasOpacity();
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      clearInterval(pulseAnimation);
+      matrixAnimation.pause();
+      if (animationRef.current) {
+        animationRef.current.pause();
+      }
     };
-  }, []);
+  }, [prefersReducedMotion, animateCanvasOpacity, createFloatingLayers]);
+
+  useEffect(() => {
+    if (!particlesRef.current) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (prefersReducedMotion) return;
+
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+      const layers = particlesRef.current?.querySelectorAll(".matrix-layer");
+      if (layers) {
+        anime(layers, {
+          translateX: (_el: Target, i: number) => x * (i + 1) * 0.5,
+          translateY: (_el: Target, i: number) => y * (i + 1) * 0.5,
+          duration: durations.slow,
+          easing: animeEasings.smoothOut
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return (
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-900/5 to-transparent" />
+      </div>
+    );
+  }
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
-    />
+    <div className="fixed inset-0 pointer-events-none z-0">
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0"
+        style={{ opacity: 0.4 }}
+      />
+      <div
+        ref={particlesRef}
+        className="absolute inset-0"
+        style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+      />
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/50" />
+    </div>
   );
 }
