@@ -2,19 +2,26 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Github, Linkedin } from "lucide-react";
+import { Menu, X, Github, Linkedin, ArrowUp } from "lucide-react";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+
+      // Calculate scroll progress
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
 
       const sections = ["hero", "projects", "contest"];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = scrollY + 100;
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -168,21 +175,24 @@ export default function Navigation() {
         </div>
       )}
 
-      {/* Progress Bar */}
-      <div className="fixed top-16 left-0 right-0 h-0.5 bg-gray-800 z-40">
+      {/* Progress Bar - At the very top */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-800 z-50">
         <div
           className="h-full bg-gradient-to-r from-green-400 to-cyan-400 transition-all duration-300"
-          style={{
-            width: `${
-              typeof window !== "undefined"
-                ? (window.scrollY /
-                    (document.documentElement.scrollHeight - window.innerHeight)) *
-                  100
-                : 0
-            }%`,
-          }}
+          style={{ width: `${scrollProgress}%` }}
         />
       </div>
+
+      {/* Back to Top Button */}
+      {isScrolled && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 z-50 bg-green-500/20 hover:bg-green-500/30 text-green-400 p-3 rounded-full border border-green-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/20"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={20} />
+        </button>
+      )}
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import OptimizedMatrixRain from "@/components/animations/OptimizedMatrixRain";
 import AnimatedHero from "@/components/animations/AnimatedHero";
 import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
@@ -54,41 +55,37 @@ export default function Home() {
         {/* Animated Hero Section */}
         <AnimatedHero />
 
-        {/* Animated Contest Banner - MOVED TO TOP */}
-        <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 pt-8 pb-10">
-          <div
-            ref={contestRef}
-            className="bg-gradient-to-r from-green-900/50 to-cyan-900/50 rounded-lg p-8 text-center border border-green-500/30 relative overflow-hidden"
-            style={{ opacity: 0 }}
-          >
-            <ContestGlow />
-            <h2 className="text-3xl font-bold mb-4 text-green-400" style={{ opacity: 0 }}>
-              🏆 Contest Entry: SQL-Ball
-            </h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto" style={{ opacity: 0 }}>
-              Football data analytics with natural language queries, AI-powered insights,
-              and interactive performance visualizations.
-            </p>
-            <Button
-              className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold transform-gpu"
-              style={{ opacity: 0 }}
-              onMouseEnter={(e) => handleButtonHover(e.currentTarget)}
-              onMouseLeave={(e) => handleButtonLeave(e.currentTarget)}
-            >
-              View Contest Project
-            </Button>
-          </div>
-        </section>
+        {/* Course Stats Section - MOVED TO TOP */}
+        <CourseStatsSection />
 
-        {/* Animated Projects Grid */}
+        {/* Main Projects Section */}
         <section id="projects" className="container mx-auto px-4 py-10">
-          <ProjectsHeader />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
+          <h2 className="text-4xl font-bold text-center mb-12 text-green-400">
+            Main Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+            {mainProjects.map((project, index) => (
               <AnimatedProjectCard
                 key={project.id}
                 project={project}
                 index={index}
+              />
+            ))}
+          </div>
+
+          {/* Projects in Development Section */}
+          <h2 className="text-4xl font-bold text-center mb-4 text-cyan-400">
+            Projects in Development
+          </h2>
+          <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+            Exciting projects coming soon! Each project is being carefully crafted to showcase advanced AI capabilities.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projectsInDevelopment.map((project, index) => (
+              <AnimatedProjectCard
+                key={project.id}
+                project={project}
+                index={index + mainProjects.length}
               />
             ))}
           </div>
@@ -132,6 +129,34 @@ export default function Home() {
 
         {/* Learning Journey Section - NEW */}
         <LearningJourneySection />
+
+        {/* Animated Contest Banner - MOVED TO BOTTOM */}
+        <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 py-12">
+          <div
+            ref={contestRef}
+            className="bg-gradient-to-r from-green-900/50 to-cyan-900/50 rounded-lg p-8 text-center border border-green-500/30 relative overflow-hidden"
+            style={{ opacity: 0 }}
+          >
+            <ContestGlow />
+            <h2 className="text-3xl font-bold mb-4 text-green-400" style={{ opacity: 0 }}>
+              🏆 Contest Entry: SQL-Ball
+            </h2>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto" style={{ opacity: 0 }}>
+              Football data analytics with natural language queries, AI-powered insights,
+              and interactive performance visualizations.
+            </p>
+            <Link href="/projects/sql-ball">
+              <Button
+                className="bg-cyan-500 hover:bg-cyan-600 text-black font-semibold transform-gpu"
+                style={{ opacity: 0 }}
+                onMouseEnter={(e) => handleButtonHover(e.currentTarget)}
+                onMouseLeave={(e) => handleButtonLeave(e.currentTarget)}
+              >
+                View Contest Project
+              </Button>
+            </Link>
+          </div>
+        </section>
       </main>
       
       {/* Footer */}
@@ -148,56 +173,80 @@ interface Project {
   status: "completed" | "in-progress" | "upcoming";
   techStack: string[];
   link?: string;
+  progress?: number;
+  eta?: string;
+  githubUrl?: string;
 }
 
-const projects: Project[] = [
+const mainProjects: Project[] = [
+  {
+    id: "ai-comparison-showcase",
+    title: "AI Comparison Showcase",
+    description: "Compare responses from multiple AI models side-by-side in real-time",
+    week: "Featured",
+    status: "completed",
+    techStack: ["Next.js", "TypeScript", "Multiple AI APIs"],
+  },
+  {
+    id: "sql-ball",
+    title: "SQL-Ball",
+    description: "Football data analytics with natural language queries and AI insights",
+    week: "Contest Winner",
+    status: "completed",
+    techStack: ["Supabase", "LangChain", "D3.js"],
+  },
+];
+
+const projectsInDevelopment: Project[] = [
   {
     id: "ai-code-generator",
     title: "AI Code Generator",
     description: "Natural language to code conversion with multi-language support",
     week: "Week 1",
-    status: "upcoming",
+    status: "in-progress",
     techStack: ["LangChain", "GPT-4o", "Tree-sitter"],
+    progress: 75,
+    eta: "September 20th, 2025",
   },
   {
     id: "git-review-assistant",
     title: "Git Review Assistant",
     description: "AI-powered code review system with automated PR feedback",
     week: "Week 2",
-    status: "upcoming",
+    status: "in-progress",
     techStack: ["LangChain", "GitHub API", "FastAPI"],
+    progress: 60,
+    eta: "September 24th, 2025",
   },
   {
     id: "rag-chatbot",
     title: "RAG Chatbot",
     description: "Document-based Q&A system with semantic search and citations",
     week: "Week 3",
-    status: "upcoming",
+    status: "in-progress",
     techStack: ["Pinecone", "OpenAI", "LangChain"],
+    progress: 45,
+    eta: "September 27th, 2025",
   },
   {
     id: "multi-agent-system",
     title: "Multi-Agent System",
     description: "Collaborative AI agents for complex task orchestration",
     week: "Week 4",
-    status: "upcoming",
+    status: "in-progress",
     techStack: ["LangGraph", "Multiple LLMs", "WebSocket"],
+    progress: 30,
+    eta: "October 2nd, 2025",
   },
   {
     id: "workflow-agent",
     title: "Dev Workflow Agent",
     description: "Automate development workflows with MCP integration",
     week: "Week 5",
-    status: "upcoming",
-    techStack: ["MCP", "GitHub Actions", "Docker"],
-  },
-  {
-    id: "sql-ball",
-    title: "SQL-Ball",
-    description: "Football data analytics with natural language queries and AI insights",
-    week: "Contest",
     status: "in-progress",
-    techStack: ["Supabase", "LangChain", "D3.js"],
+    techStack: ["MCP", "GitHub Actions", "Docker"],
+    progress: 55,
+    eta: "October 5th, 2025",
   },
 ];
 
@@ -273,6 +322,57 @@ function handleButtonLeave(button: HTMLElement) {
   });
 }
 
+function CourseStatsSection() {
+  const [statsRef, isStatsVisible] = useIntersectionObserver<HTMLElement>({
+    threshold: 0.3,
+    freezeOnceVisible: true,
+  });
+  const prefersReducedMotion = useReducedMotion();
+  const statsBoxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isStatsVisible && !prefersReducedMotion && statsBoxRef.current) {
+      anime(statsBoxRef.current, {
+        opacity: [0, 1],
+        scale: [0.95, 1],
+        translateY: [20, 0],
+        duration: durations.normal,
+        easing: animeEasings.smoothOut,
+      });
+
+      anime(statsBoxRef.current.querySelectorAll("p"), {
+        opacity: [0, 1],
+        translateX: [-20, 0],
+        duration: durations.fast,
+        delay: stagger(100, { start: 200 }),
+        easing: animeEasings.smoothOut,
+      });
+    }
+  }, [isStatsVisible, prefersReducedMotion]);
+
+  return (
+    <section ref={statsRef} className="container mx-auto px-4 pt-8 pb-10">
+      <div className="text-center">
+        <div
+          ref={statsBoxRef}
+          className="inline-block bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-lg p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-500"
+          style={{ opacity: 0 }}
+        >
+          <p className="text-gray-300 mb-2" style={{ opacity: 0 }}>
+            <span className="text-green-400 font-semibold">Course Duration:</span> August - September 2025 (6 Weeks)
+          </p>
+          <p className="text-gray-300 mb-2" style={{ opacity: 0 }}>
+            <span className="text-green-400 font-semibold">Projects Completed:</span> 6 Production-Ready Applications
+          </p>
+          <p className="text-gray-300" style={{ opacity: 0 }}>
+            <span className="text-green-400 font-semibold">Technologies Mastered:</span> 12+ AI/ML Frameworks & Tools
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function LearningJourneySection() {
   const [journeyRef, isJourneyVisible] = useIntersectionObserver<HTMLElement>({
     threshold: 0.2,
@@ -281,7 +381,6 @@ function LearningJourneySection() {
   const prefersReducedMotion = useReducedMotion();
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isJourneyVisible && !prefersReducedMotion && journeyRef.current) {
@@ -323,17 +422,6 @@ function LearningJourneySection() {
         delay: stagger(30, { start: 600 }),
         easing: animeEasings.smoothOut,
       });
-
-      // Animate stats section
-      if (statsRef.current) {
-        anime(statsRef.current, {
-          opacity: [0, 1],
-          scale: [0.95, 1],
-          duration: durations.normal,
-          delay: 800,
-          easing: animeEasings.smoothOut,
-        });
-      }
     }
   }, [isJourneyVisible, prefersReducedMotion, journeyRef]);
 
@@ -416,19 +504,6 @@ function LearningJourneySection() {
         ))}
       </div>
 
-      <div className="mt-16 text-center">
-        <div ref={statsRef} className="inline-block bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-lg p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-500" style={{ opacity: 0 }}>
-          <p className="text-gray-300 mb-2">
-            <span className="text-green-400 font-semibold">Course Duration:</span> 6 Weeks of Intensive Learning
-          </p>
-          <p className="text-gray-300 mb-2">
-            <span className="text-green-400 font-semibold">Projects Completed:</span> 6 Production-Ready Applications
-          </p>
-          <p className="text-gray-300">
-            <span className="text-green-400 font-semibold">Technologies Mastered:</span> 12+ AI/ML Frameworks & Tools
-          </p>
-        </div>
-      </div>
     </section>
   );
 }

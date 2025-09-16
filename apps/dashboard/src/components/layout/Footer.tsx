@@ -26,7 +26,7 @@ export default function Footer() {
           <div>
             <h3 className="text-green-400 font-semibold text-lg mb-4">AI Course Portfolio</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Showcasing cutting-edge AI projects from the &ldquo;Mastering Generative AI & Agents for Developers&rdquo; bootcamp.
+              Showcasing cutting-edge AI projects from the &ldquo;CodeCademy Mastering Generative AI & Agents for Developers&rdquo; bootcamp.
             </p>
             <p className="text-gray-500 text-xs mt-4">
               Built with Next.js, TypeScript, Anime.js, and love from York, UK 🇬🇧

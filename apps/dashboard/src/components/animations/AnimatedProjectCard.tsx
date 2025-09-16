@@ -16,6 +16,9 @@ interface Project {
   status: "completed" | "in-progress" | "upcoming";
   techStack: string[];
   link?: string;
+  progress?: number;
+  eta?: string;
+  githubUrl?: string;
 }
 
 interface AnimatedProjectCardProps {
@@ -261,6 +264,22 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
             </span>
           </div>
 
+          {/* Progress Bar for in-progress projects */}
+          {project.status === "in-progress" && project.progress && (
+            <div className="mb-3" style={{ opacity: 0 }}>
+              <div className="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Progress</span>
+                <span>{project.progress}%</span>
+              </div>
+              <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-green-400 to-cyan-400 rounded-full transition-all duration-500"
+                  style={{ width: `${project.progress}%` }}
+                />
+              </div>
+            </div>
+          )}
+
           <h3
             className="text-xl font-semibold mb-2 text-green-400 transition-colors"
             style={{ opacity: 0 }}
@@ -281,6 +300,18 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           >
             {project.description}
           </p>
+
+          {/* ETA for in-progress projects */}
+          {project.status === "in-progress" && project.eta && (
+            <div
+              className="bg-cyan-900/20 border border-cyan-500/30 rounded-md p-2 mb-3"
+              style={{ opacity: 0 }}
+            >
+              <p className="text-xs text-cyan-400">
+                <span className="font-semibold">Expected Release:</span> {project.eta}
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="mt-auto">

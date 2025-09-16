@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { animate as anime, stagger, createTimeline, utils } from 'animejs';
 import { animeEasings, durations } from "@/lib/easings";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { Award, X } from "lucide-react";
+import { Award } from "lucide-react";
 
 export default function AnimatedHero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -14,7 +14,6 @@ export default function AnimatedHero() {
   const buttonsRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const [showCertificate, setShowCertificate] = useState(false);
 
   const createFloatingParticles = useCallback(() => {
     if (!particlesRef.current || prefersReducedMotion) return;
@@ -250,73 +249,19 @@ export default function AnimatedHero() {
       
       {/* Certificate Button */}
       <div className="mt-6">
-        <Button 
-          variant="ghost" 
-          className="text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/50 transform-gpu"
-          onClick={() => setShowCertificate(true)}
-          onMouseEnter={handleButtonHover}
-          onMouseLeave={handleButtonLeave}
-        >
-          <Award className="mr-2" size={18} />
-          Show Certificate
-        </Button>
+        <Link href="https://www.linkedin.com/in/thomasbutleruk/" target="_blank" rel="noopener noreferrer">
+          <Button
+            variant="ghost"
+            className="text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/50 transform-gpu"
+            onMouseEnter={handleButtonHover}
+            onMouseLeave={handleButtonLeave}
+            onClick={handleButtonClick}
+          >
+            <Award className="mr-2" size={18} />
+            Show Certificate
+          </Button>
+        </Link>
       </div>
-
-      {/* Certificate Modal */}
-      {showCertificate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="relative max-w-4xl mx-4 bg-gray-900 border border-green-500/30 rounded-lg p-6">
-            <Button 
-              variant="ghost" 
-              className="absolute top-4 right-4 text-gray-400 hover:text-white"
-              onClick={() => setShowCertificate(false)}
-            >
-              <X size={24} />
-            </Button>
-            
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-green-400 mb-4">Certificate of Completion</h3>
-              <div className="bg-gray-800/50 border border-cyan-500/20 rounded-lg p-8 mb-4">
-                <p className="text-gray-300 mb-2">Mastering Generative AI & Agents for Developers</p>
-                <p className="text-lg font-semibold text-white">Tom Butler</p>
-                <p className="text-sm text-gray-400 mt-2">Codecademy Bootcamp 2025</p>
-                <div className="mt-6 pt-4 border-t border-gray-700">
-                  <p className="text-xs text-gray-500">
-                    This certificate demonstrates completion of advanced coursework in:
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 mt-2 text-sm text-gray-400">
-                    <div>• LangChain & LangGraph</div>
-                    <div>• RAG Systems</div>
-                    <div>• Multi-Agent Systems</div>
-                    <div>• Vector Databases</div>
-                    <div>• AI Workflow Automation</div>
-                    <div>• Production AI Applications</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex gap-4 justify-center">
-                <Button 
-                  className="bg-green-500 hover:bg-green-600 text-black font-semibold"
-                  onClick={() => {
-                    // In a real implementation, this would download a PDF
-                    alert('Certificate download would be implemented here');
-                  }}
-                >
-                  Download Certificate
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
-                  onClick={() => setShowCertificate(false)}
-                >
-                  Close
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
