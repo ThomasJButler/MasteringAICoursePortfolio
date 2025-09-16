@@ -9,7 +9,7 @@
 
 ## ✨ Live Demo
 
-🔗 **[View Portfolio](https://masteringaicourseportfolio.vercel.app)**
+🔗 **[View Portfolio](https://www.aitomatic.io/)**
 
 ## 📚 Projects Overview
 
