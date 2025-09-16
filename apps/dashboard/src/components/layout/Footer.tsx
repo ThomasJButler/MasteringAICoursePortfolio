@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-green-400 font-semibold text-lg mb-4">AI Course Portfolio</h3>
+            <h3 className="text-green-400 font-semibold text-lg mb-4">Course Portfolio</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Showcasing cutting-edge AI projects from the &ldquo;CodeCademy Mastering Generative AI & Agents for Developers&rdquo; bootcamp.
             </p>
