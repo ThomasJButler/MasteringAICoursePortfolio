@@ -16,6 +16,8 @@ export default function Footer() {
     { href: "#contest", label: "Contest" },
     { href: "#projects", label: "Projects" },
     { href: "#journey", label: "Journey" },
+    { href: "https://www.thomasjbutler.me/", label: "Main Site", external: true },
+    { href: "https://www.thomasjbutler.me/#contact", label: "Contact Me", external: true },
   ];
 
   return (
@@ -38,18 +40,30 @@ export default function Footer() {
             <h3 className="text-green-400 font-semibold text-lg mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {quickLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-400 hover:text-green-400 text-sm transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.querySelector(link.href);
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  {link.label}
-                </a>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-green-400 text-sm transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-gray-400 hover:text-green-400 text-sm transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
             </div>
           </div>

@@ -63,7 +63,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-12 text-green-400">
             Main Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
             {mainProjects.map((project, index) => (
               <AnimatedProjectCard
                 key={project.id}
@@ -176,6 +176,7 @@ interface Project {
   progress?: number;
   eta?: string;
   githubUrl?: string;
+  image?: string;
 }
 
 const mainProjects: Project[] = [
@@ -186,6 +187,7 @@ const mainProjects: Project[] = [
     week: "Featured",
     status: "completed",
     techStack: ["Next.js", "TypeScript", "Multiple AI APIs"],
+    image: "placeholder",
   },
   {
     id: "sql-ball",
@@ -194,6 +196,7 @@ const mainProjects: Project[] = [
     week: "Contest Winner",
     status: "completed",
     techStack: ["Supabase", "LangChain", "D3.js"],
+    image: "placeholder",
   },
 ];
 

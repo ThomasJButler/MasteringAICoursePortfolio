@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Github, Linkedin, ArrowUp } from "lucide-react";
+import { Menu, X, Github, Linkedin, ArrowUp, Globe } from "lucide-react";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -96,22 +96,28 @@ export default function Navigation() {
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4">
               <Link
+                href="https://www.thomasjbutler.me/"
+                target="_blank"
+                className="text-gray-400 hover:text-green-400 transition-colors"
+                aria-label="Main Site"
+              >
+                <Globe size={18} />
+              </Link>
+              <Link
                 href="https://github.com/ThomasJButler"
                 target="_blank"
-                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+                className="text-gray-400 hover:text-green-400 transition-colors"
                 aria-label="GitHub Profile"
               >
                 <Github size={18} />
-                GitHub
               </Link>
               <Link
                 href="https://www.linkedin.com/in/thomasbutleruk/"
                 target="_blank"
-                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+                className="text-gray-400 hover:text-green-400 transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin size={18} />
-                LinkedIn
               </Link>
             </div>
 
@@ -153,6 +159,15 @@ export default function Navigation() {
                 About
               </Link>
               <div className="pt-6 border-t border-gray-800 space-y-4">
+                <Link
+                  href="https://www.thomasjbutler.me/"
+                  target="_blank"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+                >
+                  <Globe size={18} />
+                  Main Site
+                </Link>
                 <Link
                   href="https://github.com/ThomasJButler"
                   target="_blank"

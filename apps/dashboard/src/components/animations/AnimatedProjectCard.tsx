@@ -19,6 +19,7 @@ interface Project {
   progress?: number;
   eta?: string;
   githubUrl?: string;
+  image?: string;
 }
 
 interface AnimatedProjectCardProps {
@@ -135,7 +136,6 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
     if (buttonRef.current) {
       anime(buttonRef.current, {
         backgroundColor: "rgba(0, 255, 0, 0.3)",
-        scale: 1.05,
         duration: durations.fast,
         easing: animeEasings.smoothOut
       });
@@ -183,7 +183,6 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
     if (buttonRef.current) {
       anime(buttonRef.current, {
         backgroundColor: "rgba(0, 255, 0, 0.2)",
-        scale: 1,
         duration: durations.fast,
         easing: animeEasings.smoothOut,
       });
@@ -238,7 +237,9 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
     >
       <div
         ref={cardRef}
-        className="relative border border-gray-800 rounded-lg p-6 bg-gray-900/50 transition-colors duration-300 hover:border-green-500/50 h-[320px] flex flex-col"
+        className={`relative border border-gray-800 rounded-lg bg-gray-900/50 transition-colors duration-300 hover:border-green-500/50 flex flex-col ${
+          project.image ? 'h-[400px]' : 'h-[320px] p-6'
+        }`}
         style={{
           opacity: 0,
           transformStyle: "preserve-3d",
@@ -254,7 +255,29 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           }}
         />
 
-        <div ref={contentRef} className="flex-1 flex flex-col">
+        {/* Image Section - Only for main projects */}
+        {project.image && (
+          <div className="h-[180px] w-full overflow-hidden rounded-t-lg relative bg-gradient-to-br from-gray-800/50 to-gray-700/30">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 flex items-center justify-center backdrop-blur-sm">
+              <div className="text-center text-gray-300">
+                <div className="w-16 h-16 bg-gray-700/50 rounded-xl flex items-center justify-center mb-3 mx-auto border border-gray-600/50">
+                  <div className="text-2xl">📸</div>
+                </div>
+                <p className="text-sm font-medium text-gray-300">Project Screenshot</p>
+                <p className="text-xs text-gray-500 mt-1">Ready for your image</p>
+              </div>
+            </div>
+            {/* Subtle tech pattern overlay */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-4 left-4 w-2 h-2 bg-green-400 rounded-full"></div>
+              <div className="absolute top-6 right-6 w-1 h-1 bg-cyan-400 rounded-full"></div>
+              <div className="absolute bottom-8 left-8 w-1 h-1 bg-green-400 rounded-full"></div>
+              <div className="absolute bottom-4 right-4 w-2 h-2 bg-cyan-400/50 rounded-full"></div>
+            </div>
+          </div>
+        )}
+
+        <div ref={contentRef} className={`flex-1 flex flex-col ${project.image ? 'p-5' : ''}`}>
           <div className="absolute top-0 right-0 -mt-1 -mr-1">
             <span
               className={`inline-block px-2 py-1 text-xs rounded-md ${statusColors[project.status]}`}
@@ -281,21 +304,21 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           )}
 
           <h3
-            className="text-lg font-semibold mb-2 text-green-400 transition-colors"
+            className="text-xl font-semibold mb-2 text-green-400 transition-colors"
             style={{ opacity: 0 }}
           >
             {project.title}
           </h3>
 
           <p
-            className="text-xs text-gray-500 mb-2"
+            className="text-sm text-gray-500 mb-3"
             style={{ opacity: 0 }}
           >
             {project.week}
           </p>
 
           <p
-            className="text-gray-300 mb-3 text-xs line-clamp-3"
+            className="text-gray-300 mb-4 text-sm leading-relaxed line-clamp-2"
             style={{ opacity: 0 }}
           >
             {project.description}
@@ -314,12 +337,12 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           )}
         </div>
 
-        <div className="mt-auto">
-          <div ref={techStackRef} className="flex flex-wrap gap-2 mb-3 min-h-[40px]">
+        <div className="mt-auto space-y-4">
+          <div ref={techStackRef} className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-1 text-xs bg-gray-800 text-gray-400 rounded transform-gpu h-fit"
+                className="px-3 py-1.5 text-xs bg-gray-800/80 text-gray-300 rounded-full transform-gpu border border-gray-700/50 hover:border-gray-600/70 transition-colors duration-200"
                 style={{ opacity: 0 }}
               >
                 {tech}
@@ -330,8 +353,8 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           <Link href={`/projects/${project.id}`}>
             <Button
               ref={buttonRef}
-              size="sm"
-              className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu"
+              size="default"
+              className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu font-medium"
             >
               View Project →
             </Button>
