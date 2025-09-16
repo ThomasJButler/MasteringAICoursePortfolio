@@ -116,7 +116,7 @@ export default function AnimatedHero() {
 
     if (buttonsRef.current) {
       timeline.add(
-        buttonsRef.current.children,
+        buttonsRef.current.querySelectorAll("button"),
         {
           opacity: [0, 1],
           translateY: [30, 0],
@@ -198,7 +198,7 @@ export default function AnimatedHero() {
   };
 
   return (
-    <section id="hero" className="container mx-auto px-4 py-20 text-center pt-32 relative">
+    <section id="hero" className="container mx-auto px-4 py-16 text-center pt-28 relative">
       <div ref={particlesRef} className="absolute inset-0 pointer-events-none" />
       
       <h1 
@@ -217,50 +217,53 @@ export default function AnimatedHero() {
         Mastering Generative AI & Agents for Developers
       </p>
       
-      <div 
+      <div
         ref={buttonsRef}
-        className="flex gap-4 justify-center"
+        className="flex flex-col gap-4 items-center"
       >
-        <Button 
-          className="bg-green-500 hover:bg-green-600 text-black font-semibold transform-gpu"
-          style={{ opacity: 0 }}
-          onClick={(e) => {
-            handleButtonClick(e);
-            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onMouseEnter={handleButtonHover}
-          onMouseLeave={handleButtonLeave}
-        >
-          View Projects
-        </Button>
-        <Button 
-          variant="outline" 
-          className="border-green-500 text-green-500 hover:bg-green-500/10 transform-gpu"
-          style={{ opacity: 0 }}
-          onMouseEnter={handleButtonHover}
-          onMouseLeave={handleButtonLeave}
-          onClick={handleButtonClick}
-        >
-          <Link href="https://github.com/ThomasJButler" target="_blank">
-            GitHub
-          </Link>
-        </Button>
-      </div>
-      
-      {/* Certificate Button */}
-      <div className="mt-6">
-        <Link href="https://www.codecademy.com/bootcamps/ai-1/certificates/61bbd81425580b633fee49f6" target="_blank" rel="noopener noreferrer">
+        <div className="flex gap-4 justify-center">
           <Button
-            variant="ghost"
-            className="text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/50 transform-gpu"
+            className="bg-green-500 hover:bg-green-600 text-black font-semibold transform-gpu"
+            style={{ opacity: 0 }}
+            onClick={(e) => {
+              handleButtonClick(e);
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            onMouseEnter={handleButtonHover}
+            onMouseLeave={handleButtonLeave}
+          >
+            View Projects
+          </Button>
+          <Button
+            variant="outline"
+            className="border-green-500 text-green-500 hover:bg-green-500/10 transform-gpu"
+            style={{ opacity: 0 }}
             onMouseEnter={handleButtonHover}
             onMouseLeave={handleButtonLeave}
             onClick={handleButtonClick}
           >
-            <Award className="mr-2" size={18} />
-            Show Certificate
+            <Link href="https://github.com/ThomasJButler" target="_blank">
+              GitHub
+            </Link>
           </Button>
-        </Link>
+        </div>
+
+        {/* Certificate Button */}
+        <div className="mt-2">
+          <Link href="https://www.codecademy.com/bootcamps/ai-1/certificates/61bbd81425580b633fee49f6" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="ghost"
+              className="text-cyan-400 hover:text-black border border-cyan-500/30 hover:border-cyan-400/50 hover:bg-cyan-400/20 transform-gpu"
+              style={{ opacity: 0 }}
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonLeave}
+              onClick={handleButtonClick}
+            >
+              <Award className="mr-2" size={18} />
+              Show Certificate
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
