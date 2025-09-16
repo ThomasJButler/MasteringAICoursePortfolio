@@ -281,21 +281,21 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           )}
 
           <h3
-            className="text-xl font-semibold mb-2 text-green-400 transition-colors"
+            className="text-lg font-semibold mb-2 text-green-400 transition-colors"
             style={{ opacity: 0 }}
           >
             {project.title}
           </h3>
 
           <p
-            className="text-sm text-gray-500 mb-3"
+            className="text-xs text-gray-500 mb-2"
             style={{ opacity: 0 }}
           >
             {project.week}
           </p>
 
           <p
-            className="text-gray-300 mb-4 text-sm line-clamp-3"
+            className="text-gray-300 mb-3 text-xs line-clamp-3"
             style={{ opacity: 0 }}
           >
             {project.description}
@@ -304,7 +304,7 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           {/* ETA for in-progress projects */}
           {project.status === "in-progress" && project.eta && (
             <div
-              className="bg-cyan-900/20 border border-cyan-500/30 rounded-md p-2 mb-3"
+              className="bg-cyan-900/20 border border-cyan-500/30 rounded-md p-1.5 mb-2"
               style={{ opacity: 0 }}
             >
               <p className="text-xs text-cyan-400">
@@ -315,7 +315,7 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
         </div>
 
         <div className="mt-auto">
-          <div ref={techStackRef} className="flex flex-wrap gap-2 mb-4 min-h-[60px]">
+          <div ref={techStackRef} className="flex flex-wrap gap-2 mb-3 min-h-[40px]">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
