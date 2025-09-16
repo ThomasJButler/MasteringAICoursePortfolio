@@ -167,3 +167,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 *"Making AI more human through thoughtful engineering"*
 
 Built with 💚 using cutting-edge AI technologies | Powered by Next.js & Vercel
+````
