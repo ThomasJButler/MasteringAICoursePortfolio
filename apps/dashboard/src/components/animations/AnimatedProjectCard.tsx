@@ -258,22 +258,49 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
         {/* Image Section - Only for main projects */}
         {project.image && (
           <div className="h-[180px] w-full overflow-hidden rounded-t-lg relative bg-gradient-to-br from-gray-800/50 to-gray-700/30">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 flex items-center justify-center backdrop-blur-sm">
-              <div className="text-center text-gray-300">
-                <div className="w-16 h-16 bg-gray-700/50 rounded-xl flex items-center justify-center mb-3 mx-auto border border-gray-600/50">
-                  <div className="text-2xl">📸</div>
+            {project.image === "placeholder" ? (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 flex items-center justify-center backdrop-blur-sm">
+                  <div className="text-center text-gray-300">
+                    <div className="w-16 h-16 bg-gray-700/50 rounded-xl flex items-center justify-center mb-3 mx-auto border border-gray-600/50">
+                      <div className="text-2xl">📸</div>
+                    </div>
+                    <p className="text-sm font-medium text-gray-300">Project Screenshot</p>
+                    <p className="text-xs text-gray-500 mt-1">Ready for your image</p>
+                  </div>
                 </div>
-                <p className="text-sm font-medium text-gray-300">Project Screenshot</p>
-                <p className="text-xs text-gray-500 mt-1">Ready for your image</p>
+                {/* Subtle tech pattern overlay */}
+                <div className="absolute inset-0 opacity-5">
+                  <div className="absolute top-4 left-4 w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="absolute top-6 right-6 w-1 h-1 bg-cyan-400 rounded-full"></div>
+                  <div className="absolute bottom-8 left-8 w-1 h-1 bg-green-400 rounded-full"></div>
+                  <div className="absolute bottom-4 right-4 w-2 h-2 bg-cyan-400/50 rounded-full"></div>
+                </div>
+              </>
+            ) : (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                onError={(e) => {
+                  // Fallback to placeholder if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+            )}
+            {/* Fallback placeholder (hidden by default when image exists) */}
+            {project.image !== "placeholder" && (
+              <div className="hidden absolute inset-0 bg-gradient-to-br from-green-400/10 to-cyan-400/10 flex items-center justify-center backdrop-blur-sm">
+                <div className="text-center text-gray-300">
+                  <div className="w-16 h-16 bg-gray-700/50 rounded-xl flex items-center justify-center mb-3 mx-auto border border-gray-600/50">
+                    <div className="text-2xl">📸</div>
+                  </div>
+                  <p className="text-sm font-medium text-gray-300">Project Screenshot</p>
+                  <p className="text-xs text-gray-500 mt-1">Image failed to load</p>
+                </div>
               </div>
-            </div>
-            {/* Subtle tech pattern overlay */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-4 left-4 w-2 h-2 bg-green-400 rounded-full"></div>
-              <div className="absolute top-6 right-6 w-1 h-1 bg-cyan-400 rounded-full"></div>
-              <div className="absolute bottom-8 left-8 w-1 h-1 bg-green-400 rounded-full"></div>
-              <div className="absolute bottom-4 right-4 w-2 h-2 bg-cyan-400/50 rounded-full"></div>
-            </div>
+            )}
           </div>
         )}
 
