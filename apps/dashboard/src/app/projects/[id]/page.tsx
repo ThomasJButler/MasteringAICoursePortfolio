@@ -405,7 +405,7 @@ export default function ProjectDetailPage() {
                 <ImageGallery
                   images={project.screenshots.desktop}
                   title={`${project.title} Desktop`}
-                  customCaptions={(project as any).desktopCaptions}
+                  customCaptions={(project as Record<string, unknown>).desktopCaptions as string[]}
                 />
               </div>
             )}
@@ -417,7 +417,7 @@ export default function ProjectDetailPage() {
                 <ImageGallery
                   images={project.screenshots.mobile}
                   title={`${project.title} Mobile`}
-                  customCaptions={(project as any).mobileCaptions}
+                  customCaptions={(project as Record<string, unknown>).mobileCaptions as string[]}
                 />
               </div>
             )}
@@ -429,7 +429,7 @@ export default function ProjectDetailPage() {
                 <ImageGallery
                   images={project.screenshots.structure}
                   title={`${project.title} Architecture`}
-                  customCaptions={(project as any).structureCaptions}
+                  customCaptions={(project as Record<string, unknown>).structureCaptions as string[]}
                 />
               </div>
             )}
