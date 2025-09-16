@@ -6,9 +6,7 @@
   "author": "Tom Butler",
   "license": "MIT",
   "workspaces": [
-    "apps/*",
-    "packages/*",
-    "services/*"
+    "apps/*"
   ],
   "scripts": {
     "dev": "turbo dev",
