@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "turbo dev",
     "dev:dashboard": "turbo dev --filter=dashboard",
-    "build": "turbo build",
+    "build": "cd apps/dashboard && npm run build",
+    "build:turbo": "turbo build",
     "test": "turbo test",
     "lint": "turbo lint",
     "clean": "turbo clean",

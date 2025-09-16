@@ -249,34 +249,6 @@ const projectsInDevelopment: Project[] = [
   },
 ];
 
-function ProjectsHeader() {
-  const [headerRef, isVisible] = useIntersectionObserver<HTMLHeadingElement>({
-    threshold: 0.3,
-    freezeOnceVisible: true,
-  });
-  const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (isVisible && !prefersReducedMotion && headerRef.current) {
-      anime(headerRef.current, {
-        opacity: [0, 1],
-        translateY: [-30, 0],
-        duration: durations.slow,
-        easing: animeEasings.appleEaseOut,
-      });
-    }
-  }, [isVisible, prefersReducedMotion, headerRef]);
-
-  return (
-    <h2
-      ref={headerRef}
-      className="text-4xl font-bold text-center mb-12 text-green-400"
-      style={{ opacity: 0 }}
-    >
-      Portfolio Projects
-    </h2>
-  );
-}
 
 function ContestGlow() {
   const glowRef = useRef<HTMLDivElement>(null);
@@ -472,7 +444,7 @@ function LearningJourneySection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {learningHighlights.map((section, index) => (
+        {learningHighlights.map((section) => (
           <div
             key={section.title}
             className="journey-card bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/10 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
