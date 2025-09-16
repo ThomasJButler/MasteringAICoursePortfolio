@@ -243,7 +243,7 @@ const projectDetails = {
     ],
     implementation: "Currently in development. Targeting contest submission deadline.",
     github: "https://github.com/ThomasJButler/sql-ball",
-    demo: null
+    demo: "https://sql-ball.vercel.app/"
   },
   "portfolio-dashboard": {
     title: "Portfolio Dashboard",
