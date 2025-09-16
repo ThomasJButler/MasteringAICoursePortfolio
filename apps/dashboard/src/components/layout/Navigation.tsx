@@ -77,13 +77,19 @@ export default function Navigation() {
                     {item.label}
                   </button>
                 ))}
+                <Link
+                  href="/projects/portfolio-dashboard"
+                  className="text-sm font-medium text-gray-400 hover:text-green-400 transition-colors"
+                >
+                  About
+                </Link>
               </div>
             </div>
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4">
               <Link
-                href="https://github.com/tombutler"
+                href="https://github.com/ThomasJButler"
                 target="_blank"
                 className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 aria-label="GitHub Profile"
@@ -92,7 +98,7 @@ export default function Navigation() {
                 GitHub
               </Link>
               <Link
-                href="https://linkedin.com/in/tombutler"
+                href="https://www.linkedin.com/in/thomasbutleruk/"
                 target="_blank"
                 className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 aria-label="LinkedIn Profile"
@@ -132,9 +138,16 @@ export default function Navigation() {
                   {item.label}
                 </button>
               ))}
+              <Link
+                href="/projects/portfolio-dashboard"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-lg font-medium text-gray-400 hover:text-green-400 transition-colors"
+              >
+                About
+              </Link>
               <div className="pt-6 border-t border-gray-800 space-y-4">
                 <Link
-                  href="https://github.com/tombutler"
+                  href="https://github.com/ThomasJButler"
                   target="_blank"
                   className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 >
@@ -142,7 +155,7 @@ export default function Navigation() {
                   GitHub
                 </Link>
                 <Link
-                  href="https://linkedin.com/in/tombutler"
+                  href="https://www.linkedin.com/in/thomasbutleruk/"
                   target="_blank"
                   className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
                 >

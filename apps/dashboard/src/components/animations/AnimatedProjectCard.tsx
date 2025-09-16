@@ -235,8 +235,8 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
     >
       <div
         ref={cardRef}
-        className="relative border border-gray-800 rounded-lg p-6 bg-gray-900/50 transition-colors duration-300 hover:border-green-500/50"
-        style={{ 
+        className="relative border border-gray-800 rounded-lg p-6 bg-gray-900/50 transition-colors duration-300 hover:border-green-500/50 h-[320px] flex flex-col"
+        style={{
           opacity: 0,
           transformStyle: "preserve-3d",
           transform: "translateZ(0)",
@@ -251,59 +251,61 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
           }}
         />
 
-        <div ref={contentRef}>
+        <div ref={contentRef} className="flex-1 flex flex-col">
           <div className="absolute top-0 right-0 -mt-1 -mr-1">
-            <span 
+            <span
               className={`inline-block px-2 py-1 text-xs rounded-md ${statusColors[project.status]}`}
               style={{ opacity: 0 }}
             >
               {statusText[project.status]}
             </span>
           </div>
-          
-          <h3 
+
+          <h3
             className="text-xl font-semibold mb-2 text-green-400 transition-colors"
             style={{ opacity: 0 }}
           >
             {project.title}
           </h3>
-          
-          <p 
+
+          <p
             className="text-sm text-gray-500 mb-3"
             style={{ opacity: 0 }}
           >
             {project.week}
           </p>
-          
-          <p 
-            className="text-gray-300 mb-4 text-sm"
+
+          <p
+            className="text-gray-300 mb-4 text-sm line-clamp-3"
             style={{ opacity: 0 }}
           >
             {project.description}
           </p>
         </div>
-        
-        <div ref={techStackRef} className="flex flex-wrap gap-2 mb-4">
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-1 text-xs bg-gray-800 text-gray-400 rounded transform-gpu"
-              style={{ opacity: 0 }}
+
+        <div className="mt-auto">
+          <div ref={techStackRef} className="flex flex-wrap gap-2 mb-4 min-h-[60px]">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 text-xs bg-gray-800 text-gray-400 rounded transform-gpu h-fit"
+                style={{ opacity: 0 }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <Link href={`/projects/${project.id}`}>
+            <Button
+              ref={buttonRef}
+              size="sm"
+              className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu"
             >
-              {tech}
-            </span>
-          ))}
+              View Project →
+            </Button>
+          </Link>
         </div>
-        
-        <Link href={`/projects/${project.id}`}>
-          <Button 
-            ref={buttonRef}
-            size="sm" 
-            className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu"
-          >
-            View Project →
-          </Button>
-        </Link>
       </div>
     </div>
   );

@@ -242,7 +242,7 @@ export default function AnimatedHero() {
           onMouseLeave={handleButtonLeave}
           onClick={handleButtonClick}
         >
-          <Link href="https://github.com/tombutler" target="_blank">
+          <Link href="https://github.com/ThomasJButler" target="_blank">
             GitHub
           </Link>
         </Button>

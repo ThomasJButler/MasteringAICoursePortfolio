@@ -1,20 +1,21 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Code2, Mail, Heart } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: "https://github.com/tombutler", icon: Github, label: "GitHub" },
-    { href: "https://linkedin.com/in/tombutler", icon: Linkedin, label: "LinkedIn" },
-    { href: "https://twitter.com/tombutler", icon: Twitter, label: "Twitter" },
-    { href: "mailto:tom@example.com", icon: Mail, label: "Email" },
+    { href: "https://github.com/ThomasJButler", icon: Github, label: "GitHub" },
+    { href: "https://www.linkedin.com/in/thomasbutleruk/", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://codepen.io/thomasbutler", icon: Code2, label: "CodePen" },
+    { href: "mailto:dev@thomasjbutler.me.com", icon: Mail, label: "Email" },
   ];
 
   const quickLinks = [
     { href: "#hero", label: "Home" },
-    { href: "#projects", label: "Projects" },
     { href: "#contest", label: "Contest" },
+    { href: "#projects", label: "Projects" },
+    { href: "#journey", label: "Journey" },
   ];
 
   return (
@@ -28,30 +29,29 @@ export default function Footer() {
               Showcasing cutting-edge AI projects from the &ldquo;Mastering Generative AI & Agents for Developers&rdquo; bootcamp.
             </p>
             <p className="text-gray-500 text-xs mt-4">
-              Built with Next.js, TypeScript, Anime.js, and love from Liverpool, UK 🇬🇧
+              Built with Next.js, TypeScript, Anime.js, and love from York, UK 🇬🇧
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-green-400 font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-green-400 text-sm transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const element = document.querySelector(link.href);
-                      element?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-400 hover:text-green-400 text-sm transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const element = document.querySelector(link.href);
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  {link.label}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Social Links */}
@@ -76,13 +76,13 @@ export default function Footer() {
             </div>
             <p className="text-gray-500 text-xs">
               <Link 
-                href="https://linkedin.com/in/tombutler" 
+                href="https://www.linkedin.com/in/thomasbutleruk/" 
                 target="_blank"
                 className="hover:text-green-400 transition-colors underline-offset-2 hover:underline"
               >
                 Tom Butler
               </Link><br />
-              Liverpool, UK<br />
+              York, UK<br />
               #CodecademyGenAIBootcamp
             </p>
           </div>
