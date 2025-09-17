@@ -356,7 +356,33 @@ export default function ProjectDetailPage() {
               {project.status === "in-progress" ? "In Progress" : project.status === "completed" ? "Completed" : "Upcoming"}
             </span>
           </div>
-          <p className="text-xl text-gray-400 hover:text-gray-300 transition-colors duration-200">{project.week}</p>
+          <p className="text-xl text-gray-400 hover:text-gray-300 transition-colors duration-200 mb-6">{project.week}</p>
+
+          {/* Quick Action Buttons */}
+          <div className="flex gap-4 mb-6">
+            {project.github && (
+              <Button
+                asChild
+                className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20"
+              >
+                <Link href={project.github} target="_blank">
+                  <Github className="mr-2" size={20} />
+                  View on GitHub
+                </Link>
+              </Button>
+            )}
+            {project.demo && (
+              <Button
+                asChild
+                className="bg-green-500 hover:bg-green-600 text-black font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
+              >
+                <Link href={project.demo} target={project.demo === "/" ? "_self" : "_blank"}>
+                  <ExternalLink className="mr-2" size={20} />
+                  Live Demo
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
 
         {/* Project Description */}

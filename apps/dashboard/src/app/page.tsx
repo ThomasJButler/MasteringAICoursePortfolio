@@ -163,6 +163,7 @@ interface Project {
   eta?: string;
   githubUrl?: string;
   image?: string;
+  demo?: string;
 }
 
 const mainProjects: Project[] = [
@@ -174,6 +175,7 @@ const mainProjects: Project[] = [
     status: "completed",
     techStack: ["Next.js", "TypeScript", "Multiple AI APIs"],
     image: "https://res.cloudinary.com/depqttzlt/image/upload/v1754529216/aicomparison_xoherd.png",
+    demo: "https://ai-comparison-showcase.vercel.app",
   },
   {
     id: "sql-ball",
@@ -183,6 +185,7 @@ const mainProjects: Project[] = [
     status: "completed",
     techStack: ["Supabase", "LangChain", "React", 'OpenAI', 'PostGresSQL'],
     image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/generatedsql_yclpkb.png",
+    demo: "https://sql-ball.vercel.app/",
   },
 ];
 

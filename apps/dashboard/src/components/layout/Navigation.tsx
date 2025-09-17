@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Github, Linkedin, ArrowUp, Globe } from "lucide-react";
 
 export default function Navigation() {
@@ -9,6 +10,7 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +22,7 @@ export default function Navigation() {
       const progress = (scrollY / totalHeight) * 100;
       setScrollProgress(progress);
 
-      const sections = ["hero", "projects", "contest"];
+      const sections = ["hero", "projects"];
       const scrollPosition = scrollY + 100;
 
       for (const section of sections) {
@@ -39,10 +41,23 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (sectionId: string) => {
+    const isHomePage = pathname === "/";
+
+    if (isHomePage) {
+      // On homepage, scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      // On other pages, navigate to homepage with section anchor
+      if (sectionId === "hero") {
+        window.location.href = "/";
+      } else {
+        window.location.href = `/#${sectionId}`;
+      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -50,7 +65,6 @@ export default function Navigation() {
   const navItems = [
     { id: "hero", label: "Home" },
     { id: "projects", label: "Projects" },
-    { id: "contest", label: "Contest" },
   ];
 
   return (
@@ -74,7 +88,7 @@ export default function Navigation() {
                 {navItems.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => handleNavigation(item.id)}
                     className={`text-sm font-medium transition-colors ${
                       activeSection === item.id
                         ? "text-green-400"
@@ -84,6 +98,12 @@ export default function Navigation() {
                     {item.label}
                   </button>
                 ))}
+                <Link
+                  href="/projects/sql-ball"
+                  className="text-sm font-medium text-gray-400 hover:text-green-400 transition-colors"
+                >
+                  Contest
+                </Link>
                 <Link
                   href="/projects/portfolio-dashboard"
                   className="text-sm font-medium text-gray-400 hover:text-green-400 transition-colors"
@@ -141,7 +161,7 @@ export default function Navigation() {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => handleNavigation(item.id)}
                   className={`block text-lg font-medium transition-colors ${
                     activeSection === item.id
                       ? "text-green-400"
@@ -151,6 +171,13 @@ export default function Navigation() {
                   {item.label}
                 </button>
               ))}
+              <Link
+                href="/projects/sql-ball"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-lg font-medium text-gray-400 hover:text-green-400 transition-colors"
+              >
+                Contest
+              </Link>
               <Link
                 href="/projects/portfolio-dashboard"
                 onClick={() => setIsMobileMenuOpen(false)}

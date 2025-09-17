@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { animate as anime, stagger } from 'animejs';
 import { animeEasings, durations } from "@/lib/easings";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
@@ -20,6 +21,7 @@ interface Project {
   eta?: string;
   githubUrl?: string;
   image?: string;
+  demo?: string;
 }
 
 interface AnimatedProjectCardProps {
@@ -377,15 +379,39 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
             ))}
           </div>
 
-          <Link href={`/projects/${project.id}`}>
-            <Button
-              ref={buttonRef}
-              size="default"
-              className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu font-medium"
-            >
-              View Project →
-            </Button>
-          </Link>
+          {/* Show dual buttons for AI Comparison and SQL-Ball */}
+          {(project.id === "ai-comparison-showcase" || project.id === "sql-ball") && project.demo ? (
+            <div className="grid grid-cols-2 gap-2">
+              <Link href={`/projects/${project.id}`}>
+                <Button
+                  size="sm"
+                  className="w-full bg-gray-800/50 hover:bg-gray-700/70 text-gray-300 border border-gray-600/50 transform-gpu font-medium text-xs"
+                >
+                  Project Info
+                </Button>
+              </Link>
+              <Link href={project.demo} target="_blank">
+                <Button
+                  ref={buttonRef}
+                  size="sm"
+                  className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu font-medium text-xs"
+                >
+                  <ExternalLink className="mr-1" size={14} />
+                  Live Site
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <Link href={`/projects/${project.id}`}>
+              <Button
+                ref={buttonRef}
+                size="default"
+                className="w-full bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/50 transform-gpu font-medium"
+              >
+                View Project →
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
