@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
@@ -66,22 +66,22 @@ export default function ImageGallery({ images, title, className = "", customCapt
     setIsOpen(true);
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setIsOpen(false);
     setTimeout(() => setSelectedImage(null), 200);
-  };
+  }, []);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     if (selectedImage !== null && selectedImage > 0) {
       setSelectedImage(selectedImage - 1);
     }
-  };
+  }, [selectedImage]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     if (selectedImage !== null && selectedImage < imageItems.length - 1) {
       setSelectedImage(selectedImage + 1);
     }
-  };
+  }, [selectedImage, imageItems.length]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
