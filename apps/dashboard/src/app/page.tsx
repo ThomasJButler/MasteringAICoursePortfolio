@@ -8,6 +8,7 @@ import AnimatedProjectCard from "@/components/animations/AnimatedProjectCard";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import TechStackIcon from "@/components/ui/TechStackIcon";
+import MatrixDivider from "@/components/ui/MatrixDivider";
 import { animate as anime, stagger } from 'animejs';
 import { useEffect, useRef } from "react";
 import { animeEasings, durations } from "@/lib/easings";
@@ -55,6 +56,9 @@ export default function Home() {
         {/* Animated Hero Section */}
         <AnimatedHero />
 
+        {/* Hero to Projects Divider */}
+        <MatrixDivider variant="glow" />
+
         {/* Main Projects Section */}
         <section id="projects" className="container mx-auto px-4 py-6">
           <MainProjectsHeading />
@@ -68,6 +72,9 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Main to Development Projects Divider */}
+          <MatrixDivider variant="dots" />
+
           {/* Projects in Development Section */}
           <ProjectsInDevelopmentHeading />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -80,6 +87,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Projects to Skills Divider */}
+        <MatrixDivider variant="default" />
 
         {/* Skills & Technologies Section */}
         <section className="container mx-auto px-4 py-10">
@@ -110,11 +120,20 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Skills to Stats Divider */}
+        <MatrixDivider variant="glow" />
+
         {/* Course Stats Section - MOVED HERE */}
         <CourseStatsSection />
 
+        {/* Stats to Journey Divider */}
+        <MatrixDivider variant="dots" />
+
         {/* Learning Journey Section - NEW */}
         <LearningJourneySection />
+
+        {/* Journey to Contest Divider */}
+        <MatrixDivider variant="default" />
 
         {/* Animated Contest Banner - MOVED TO BOTTOM */}
         <section ref={contestSectionRef} id="contest" className="container mx-auto px-4 py-12">
@@ -163,6 +182,7 @@ interface Project {
   eta?: string;
   githubUrl?: string;
   image?: string;
+  demo?: string;
 }
 
 const mainProjects: Project[] = [
@@ -174,6 +194,7 @@ const mainProjects: Project[] = [
     status: "completed",
     techStack: ["Next.js", "TypeScript", "Multiple AI APIs"],
     image: "https://res.cloudinary.com/depqttzlt/image/upload/v1754529216/aicomparison_xoherd.png",
+    demo: "https://ai-comparison-showcase.vercel.app",
   },
   {
     id: "sql-ball",
@@ -183,6 +204,7 @@ const mainProjects: Project[] = [
     status: "completed",
     techStack: ["Supabase", "LangChain", "React", 'OpenAI', 'PostGresSQL'],
     image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/generatedsql_yclpkb.png",
+    demo: "https://sql-ball.vercel.app/",
   },
 ];
 
@@ -496,7 +518,7 @@ function MainProjectsHeading() {
         easing: animeEasings.smoothOut,
       });
     }
-  }, [isVisible, prefersReducedMotion]);
+  }, [isVisible, prefersReducedMotion, headerRef]);
 
   return (
     <h2
@@ -540,7 +562,7 @@ function ProjectsInDevelopmentHeading() {
         });
       }
     }
-  }, [isVisible, prefersReducedMotion]);
+  }, [isVisible, prefersReducedMotion, headerRef]);
 
   return (
     <div ref={headerRef}>
@@ -593,7 +615,7 @@ function SkillsAndTechHeading() {
         });
       }
     }
-  }, [isVisible, prefersReducedMotion]);
+  }, [isVisible, prefersReducedMotion, headerRef]);
 
   return (
     <div ref={headerRef} className="text-center mb-16">
