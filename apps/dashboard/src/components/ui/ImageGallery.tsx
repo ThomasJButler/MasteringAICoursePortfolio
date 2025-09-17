@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { animate as anime, stagger } from 'animejs';
@@ -120,22 +121,25 @@ export default function ImageGallery({ images, title, className = "", customCapt
             onClick={() => openLightbox(index)}
             style={{ opacity: 0 }}
           >
-            <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center overflow-hidden">
+            <div className="aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 flex items-center justify-center overflow-hidden relative">
               {image.src ? (
                 <>
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
                     onError={(e) => {
                       // Fallback to placeholder if image fails to load
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      const placeholder = target.nextElementSibling as HTMLElement;
+                      const placeholder = target.parentElement?.querySelector('.fallback-placeholder') as HTMLElement;
                       if (placeholder) placeholder.style.display = 'flex';
                     }}
                   />
-                  <div className="hidden text-center items-center justify-center w-full h-full">
+                  <div className="fallback-placeholder hidden text-center items-center justify-center w-full h-full absolute inset-0">
                     <div>
                       <Maximize2 size={32} className="mx-auto mb-2 text-gray-400 group-hover:text-green-400 transition-colors" />
                       <p className="text-sm text-gray-400 group-hover:text-green-400 transition-colors">
@@ -210,30 +214,35 @@ export default function ImageGallery({ images, title, className = "", customCapt
 
                 {/* Main image display */}
                 <div className="bg-gray-900/50 border border-gray-700/50 rounded-xl overflow-hidden">
-                  <div className="relative">
+                  <div className="relative max-h-[80vh]">
                     {imageItems[selectedImage].src ? (
                       <>
-                        <img
-                          src={imageItems[selectedImage].src}
-                          alt={imageItems[selectedImage].alt}
-                          className="w-full h-auto max-h-[80vh] object-contain"
-                          onError={(e) => {
-                            // Fallback to placeholder if image fails to load
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const placeholder = target.nextElementSibling as HTMLElement;
-                            if (placeholder) placeholder.style.display = 'flex';
-                          }}
-                        />
-                        <div className="hidden aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 items-center justify-center">
-                          <div className="text-center">
-                            <Maximize2 size={64} className="mx-auto mb-4 text-gray-400" />
-                            <h3 className="text-xl font-semibold text-white mb-2">
-                              {imageItems[selectedImage].title}
-                            </h3>
-                            <p className="text-gray-400">
-                              Image {selectedImage + 1} of {imageItems.length}
-                            </p>
+                        <div className="relative w-full h-auto max-h-[80vh]">
+                          <Image
+                            src={imageItems[selectedImage].src}
+                            alt={imageItems[selectedImage].alt}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto max-h-[80vh] object-contain"
+                            priority
+                            onError={(e) => {
+                              // Fallback to placeholder if image fails to load
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const placeholder = target.parentElement?.querySelector('.lightbox-fallback') as HTMLElement;
+                              if (placeholder) placeholder.style.display = 'flex';
+                            }}
+                          />
+                          <div className="lightbox-fallback hidden aspect-video bg-gradient-to-br from-gray-800/80 to-gray-900/80 items-center justify-center absolute inset-0">
+                            <div className="text-center">
+                              <Maximize2 size={64} className="mx-auto mb-4 text-gray-400" />
+                              <h3 className="text-xl font-semibold text-white mb-2">
+                                {imageItems[selectedImage].title}
+                              </h3>
+                              <p className="text-gray-400">
+                                Image {selectedImage + 1} of {imageItems.length}
+                              </p>
+                            </div>
                           </div>
                         </div>
 

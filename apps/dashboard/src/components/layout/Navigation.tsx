@@ -42,8 +42,6 @@ export default function Navigation() {
   }, []);
 
   const handleNavigation = (sectionId: string) => {
-    const isHomePage = pathname === "/";
-
     if (isHomePage) {
       // On homepage, scroll to section
       const element = document.getElementById(sectionId);
@@ -62,8 +60,10 @@ export default function Navigation() {
     }
   };
 
+  const isHomePage = pathname === "/";
+
   const navItems = [
-    { id: "hero", label: "Home" },
+    ...(isHomePage ? [] : [{ id: "hero", label: "Home" }]),
     { id: "projects", label: "Projects" },
   ];
 
