@@ -10,6 +10,7 @@ import ImageGallery from "@/components/ui/ImageGallery";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import MatrixRain from "@/components/animations/MatrixRain";
+import MatrixDivider from "@/components/ui/MatrixDivider";
 
 export default function AIComparisonShowcasePage() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -164,6 +165,9 @@ export default function AIComparisonShowcasePage() {
           </div>
         </div>
 
+        {/* Divider */}
+        <MatrixDivider variant="glow" />
+
         {/* Key Features */}
         <div className="mb-12">
           <h2 className="text-3xl font-semibold text-center text-white mb-8">
@@ -220,6 +224,9 @@ export default function AIComparisonShowcasePage() {
           </div>
         </div>
 
+        {/* Divider */}
+        <MatrixDivider variant="dots" />
+
         {/* Project Screenshots */}
         <div ref={galleryRef} className="mb-12" style={{ opacity: 0 }}>
           <h2 className="text-3xl font-semibold text-center text-white mb-8">
@@ -245,6 +252,9 @@ export default function AIComparisonShowcasePage() {
             ]}
           />
         </div>
+
+        {/* Divider */}
+        <MatrixDivider variant="glow" />
 
         {/* Implementation Highlights */}
         <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 mb-12">
@@ -288,6 +298,9 @@ export default function AIComparisonShowcasePage() {
             </div>
           </div>
         </div>
+
+        {/* Divider */}
+        <MatrixDivider variant="dots" />
 
         {/* CTA Section */}
         <div className="text-center py-8">
