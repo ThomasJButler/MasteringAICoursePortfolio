@@ -197,6 +197,16 @@ const mainProjects: Project[] = [
     demo: "https://ai-comparison-showcase.vercel.app",
   },
   {
+    id: "ai-code-generator",
+    title: "AI Code Generator",
+    description: "Generate production-ready code with AI assistance",
+    week: "Week 1-2",
+    status: "completed",
+    techStack: ["LangChain", "GPT-4o", "Python", "Flask", "React"],
+    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratorfrontend_jccy53.png",
+    demo: "https://ai-code-generator-rouge.vercel.app/",
+  },
+  {
     id: "sql-ball",
     title: "SQL-Ball",
     description: "Football data analytics with natural language queries and AI insights",
@@ -206,19 +216,19 @@ const mainProjects: Project[] = [
     image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/generatedsql_yclpkb.png",
     demo: "https://sql-ball.vercel.app/",
   },
+  {
+    id: "portfolio-dashboard",
+    title: "Portfolio Dashboard",
+    description: "Interactive AI course portfolio showcasing projects and learning journey",
+    week: "Meta Project",
+    status: "completed",
+    techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Anime.js"],
+    image: "https://res.cloudinary.com/depqttzlt/image/upload/v1758053628/aicourseportfolio_pejlr2.png",
+    demo: "/",
+  },
 ];
 
 const projectsInDevelopment: Project[] = [
-  {
-    id: "ai-code-generator",
-    title: "AI Code Generator",
-    description: "Natural language to code conversion with multi-language support",
-    week: "Week 1",
-    status: "in-progress",
-    techStack: ["LangChain", "GPT-4o", "Tree-sitter"],
-    progress: 95,
-    eta: "September 20th, 2025",
-  },
   {
     id: "git-review-assistant",
     title: "Git Review Assistant",
@@ -257,16 +267,6 @@ const projectsInDevelopment: Project[] = [
     status: "in-progress",
     techStack: ["MCP", "GitHub Actions", "Docker"],
     progress: 5,
-    eta: "October 12th, 2025",
-  },
-  {
-    id: "portfolio-dashboard",
-    title: "Portfolio Dashboard",
-    description: "Interactive AI course portfolio showcasing projects and learning journey",
-    week: "Meta Project",
-    status: "in-progress",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Anime.js"],
-    progress: 50,
     eta: "October 12th, 2025",
   },
 ];

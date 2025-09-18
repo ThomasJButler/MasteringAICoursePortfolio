@@ -12,7 +12,7 @@ import Footer from "@/components/layout/Footer";
 import MatrixRain from "@/components/animations/MatrixRain";
 import MatrixDivider from "@/components/ui/MatrixDivider";
 
-export default function AIComparisonShowcasePage() {
+export default function AICodeGeneratorPage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -85,24 +85,24 @@ export default function AIComparisonShowcasePage() {
         {/* Header */}
         <div ref={headerRef} className="text-center mb-12" style={{ opacity: 0 }}>
           <div className="inline-flex items-center justify-center mb-4">
-            <Sparkles className="text-green-400 mr-3" size={32} />
+            <Code2 className="text-green-400 mr-3" size={32} />
             <h1 className="text-4xl md:text-5xl font-bold text-white">
-              AI Comparison Showcase
+              AI Code Generator
             </h1>
             <Sparkles className="text-cyan-400 ml-3" size={32} />
           </div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Compare responses from multiple AI models side-by-side in real-time
+            Generate production-ready code with AI assistance
           </p>
 
           <div className="flex gap-4 justify-center mt-6">
-            <Link href="https://ai-comparison-showcase.vercel.app" target="_blank">
+            <Link href="https://ai-code-generator-rouge.vercel.app/" target="_blank">
               <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold">
                 <ExternalLink className="mr-2" size={18} />
                 View Live Site
               </Button>
             </Link>
-            <Link href="https://github.com/ThomasJButler/AI-Comparison-Showcase-" target="_blank">
+            <Link href="https://github.com/ThomasJButler/AICodeGenerator" target="_blank">
               <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500/10">
                 <Github className="mr-2" size={18} />
                 View on GitHub
@@ -120,13 +120,14 @@ export default function AIComparisonShowcasePage() {
               Project Overview
             </h2>
             <p className="text-gray-300 mb-4">
-              A cutting-edge web application that allows users to compare responses from multiple AI models
-              simultaneously. Built with modern web technologies to provide real-time comparisons and insights
-              into how different AI models interpret and respond to the same prompts.
+              An intelligent natural language to code conversion system that leverages advanced AI models
+              to generate high-quality, well-structured code from plain English descriptions. Features
+              support for multiple programming languages and frameworks with automated testing and
+              documentation generation.
             </p>
             <p className="text-gray-300">
-              This project demonstrates advanced API integration, real-time data handling, and sophisticated
-              UI/UX design patterns to create an intuitive comparison platform for AI enthusiasts and developers.
+              This project demonstrates advanced prompt engineering, multi-language code generation,
+              and the integration of AI-powered development tools to accelerate the software development process.
             </p>
           </div>
 
@@ -140,25 +141,25 @@ export default function AIComparisonShowcasePage() {
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">Frontend:</strong> Next.js 14, TypeScript, Tailwind CSS
+                  <strong className="text-white">Backend:</strong> Flask (Python), RESTful APIs
                 </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">AI Models:</strong> OpenAI GPT-4, Claude 3, Gemini Pro
+                  <strong className="text-white">Frontend:</strong> React, TypeScript, Modern CSS
                 </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">State Management:</strong> Zustand, TanStack Query
+                  <strong className="text-white">AI Integration:</strong> LangChain, GPT-4o, OpenAI API
                 </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">Deployment:</strong> Vercel, Edge Functions
+                  <strong className="text-white">Deployment:</strong> Vercel, Cloud Functions
                 </span>
               </div>
             </div>
@@ -176,38 +177,38 @@ export default function AIComparisonShowcasePage() {
           <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "Real-time Comparison",
-                description: "Compare AI responses as they stream in real-time",
+                title: "Multi-Language Support",
+                description: "Generate code in Python, JavaScript, Java, C#, and more",
                 color: "from-green-500/20 to-green-600/10",
                 borderColor: "border-green-500/30"
               },
               {
-                title: "Multiple AI Models",
-                description: "Support for GPT-4, Claude, Gemini, and more",
+                title: "Automated Testing",
+                description: "Generate comprehensive test cases for all functions",
                 color: "from-cyan-500/20 to-cyan-600/10",
                 borderColor: "border-cyan-500/30"
               },
               {
-                title: "Response Analytics",
-                description: "Analyze response times, token usage, and costs",
+                title: "Documentation Generation",
+                description: "Create detailed documentation with examples",
                 color: "from-purple-500/20 to-purple-600/10",
                 borderColor: "border-purple-500/30"
               },
               {
-                title: "Prompt Templates",
-                description: "Save and reuse prompt templates for consistency",
+                title: "Real-time Streaming",
+                description: "Watch code generate in real-time with syntax highlighting",
                 color: "from-yellow-500/20 to-yellow-600/10",
                 borderColor: "border-yellow-500/30"
               },
               {
-                title: "Export Results",
-                description: "Export comparisons as JSON, CSV, or PDF",
+                title: "Code Quality Optimization",
+                description: "Best practices enforcement and performance optimization",
                 color: "from-red-500/20 to-red-600/10",
                 borderColor: "border-red-500/30"
               },
               {
-                title: "Dark Mode UI",
-                description: "Beautiful dark theme optimized for developers",
+                title: "Responsive Design",
+                description: "Optimized for both desktop and mobile devices",
                 color: "from-indigo-500/20 to-indigo-600/10",
                 borderColor: "border-indigo-500/30"
               }
@@ -234,21 +235,21 @@ export default function AIComparisonShowcasePage() {
           </h2>
           <ImageGallery
             images={[
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/buildmodel_bbmlst.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053562/aicodeoutput_l0bp9d.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053563/aicompare_wnz39e.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758029930/particleuniverseaicomparison_kydtbd.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1737693677/Usage_Patterns_iw5j6a.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1737694764/python_projects_cxbrnj.png"
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratorfrontend_jccy53.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201815/codegeneratorcode_lrojre.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratortests_an5wmq.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratordocs_snywas.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/ai-code-generator-rouge.vercel.appmobile1__jlxcm2.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/ai-code-generator-rouge.vercel.appmobile2_cxmy8i.png"
             ]}
-            title="AI Comparison Showcase"
+            title="AI Code Generator"
             customCaptions={[
-              "Building AI Model Integration",
-              "AI Code Output Display",
-              "AI Model Comparison Interface",
-              "Particle Universe Visualization",
-              "Usage Patterns Analytics",
-              "Python Projects Dashboard"
+              "Frontend Application Interface",
+              "Code Generation Output",
+              "Automated Test Generation",
+              "Documentation Generation",
+              "Mobile Responsive Interface",
+              "Mobile Code Generation View"
             ]}
           />
         </div>
@@ -263,19 +264,53 @@ export default function AIComparisonShowcasePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Performance</h3>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Code Generation Engine</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Optimized API calls with request batching
+                  Advanced LangChain integration with GPT-4o
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Response caching for improved performance
+                  Multi-language code generation with context awareness
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Lazy loading and code splitting
+                  Real-time streaming code output with syntax highlighting
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Testing & Documentation</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Automated test case generation for functions
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Comprehensive code documentation generation
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Code quality validation and best practices enforcement
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Architecture</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Flask backend with RESTful API design
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  React frontend with TypeScript for type safety
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Optimized prompt engineering for code quality
                 </li>
               </ul>
             </div>
@@ -284,15 +319,15 @@ export default function AIComparisonShowcasePage() {
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Responsive design for all devices
+                  Responsive design for desktop and mobile
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Keyboard shortcuts for power users
+                  Tabbed interface for code, tests, and documentation
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Accessibility-first development
+                  Copy-to-clipboard functionality and code export
                 </li>
               </ul>
             </div>
@@ -305,13 +340,13 @@ export default function AIComparisonShowcasePage() {
         {/* CTA Section */}
         <div className="text-center py-8">
           <div className="flex gap-4 justify-center">
-            <Link href="https://ai-comparison-showcase.vercel.app" target="_blank">
+            <Link href="https://ai-code-generator-rouge.vercel.app/" target="_blank">
               <Button size="lg" className="bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-black font-bold">
                 <ExternalLink className="mr-2" size={20} />
                 Try the Live Demo
               </Button>
             </Link>
-            <Link href="https://github.com/ThomasJButler/AI-Comparison-Showcase-" target="_blank">
+            <Link href="https://github.com/ThomasJButler/AICodeGenerator" target="_blank">
               <Button size="lg" variant="outline" className="border-green-500 text-green-400 hover:bg-green-500/10">
                 <Github className="mr-2" size={20} />
                 View Source Code

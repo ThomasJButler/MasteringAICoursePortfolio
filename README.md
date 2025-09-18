@@ -31,7 +31,26 @@ Compare responses from multiple AI models (GPT-4, Claude 3.5, Gemini) side-by-si
 
 ---
 
-#### ⚽ SQL-Ball 
+#### 🤖 AI Code Generator
+**Status: Completed**
+Generate production-ready code with AI assistance, featuring multi-language support, automated testing, and comprehensive documentation generation.
+
+**Live Demo:** [ai-code-generator-rouge.vercel.app](https://ai-code-generator-rouge.vercel.app/)
+
+**Features:**
+- Natural language to code conversion with multiple programming languages
+- Automated test case generation for generated functions
+- Comprehensive code documentation generation
+- Real-time code streaming and syntax highlighting
+- Multi-language support (Python, JavaScript, Java, C#, etc.)
+- Code quality optimization and best practices enforcement
+- Responsive design with mobile and desktop support
+
+**Tech:** LangChain, GPT-4o, Python, Flask, React, TypeScript
+
+---
+
+#### ⚽ SQL-Ball
 **Status: Completed**
 Football data analytics platform with natural language queries, AI-powered insights, and interactive performance visualizations.
 
@@ -47,19 +66,6 @@ Football data analytics platform with natural language queries, AI-powered insig
 
 ### 🚧 Projects in Development
 
-#### 🤖 AI Code Generator (Week 1-2)
-**Status: 95% Complete**
-Natural language to code conversion with multi-language support and intelligent code optimization.
-
-**Features:**
-- Multi-language code generation
-- Automated testing and optimization
-- Code review integration
-- Performance analytics
-
-**Tech:** LangChain, GPT-4o, Tree-sitter
-
----
 
 #### 🔍 Git Review Assistant (Week 2)
 **Status: 90% Complete**
@@ -152,9 +158,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📊 Project Stats
 
 - **Duration:** 6 weeks (August - September 2025)
-- **Projects Completed:** 6 production-ready applications
+- **Projects Completed:** 3 production-ready applications (AI Comparison Showcase, AI Code Generator, SQL-Ball)
+- **Projects in Development:** 4 advanced AI systems
 - **Technologies Mastered:** 12+ AI/ML frameworks and tools
-- **Lines of Code:** 10,000+ (TypeScript, Python, SQL)
+- **Lines of Code:** 15,000+ (TypeScript, Python, SQL, Flask, React)
 
 ## 👨‍💻 Author
 

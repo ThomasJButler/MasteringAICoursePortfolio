@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Github, ExternalLink, Code2, Sparkles, Zap } from "lucide-react";
+import { ArrowLeft, Github, ExternalLink, Database, Sparkles, Zap } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { animate as anime, stagger } from 'animejs';
 import { animeEasings, durations } from "@/lib/easings";
@@ -12,7 +12,7 @@ import Footer from "@/components/layout/Footer";
 import MatrixRain from "@/components/animations/MatrixRain";
 import MatrixDivider from "@/components/ui/MatrixDivider";
 
-export default function AIComparisonShowcasePage() {
+export default function SQLBallPage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
@@ -85,24 +85,24 @@ export default function AIComparisonShowcasePage() {
         {/* Header */}
         <div ref={headerRef} className="text-center mb-12" style={{ opacity: 0 }}>
           <div className="inline-flex items-center justify-center mb-4">
-            <Sparkles className="text-green-400 mr-3" size={32} />
+            <Database className="text-green-400 mr-3" size={32} />
             <h1 className="text-4xl md:text-5xl font-bold text-white">
-              AI Comparison Showcase
+              SQL-Ball
             </h1>
             <Sparkles className="text-cyan-400 ml-3" size={32} />
           </div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Compare responses from multiple AI models side-by-side in real-time
+            Football data analytics with natural language queries and AI insights
           </p>
 
           <div className="flex gap-4 justify-center mt-6">
-            <Link href="https://ai-comparison-showcase.vercel.app" target="_blank">
+            <Link href="https://sql-ball.vercel.app/" target="_blank">
               <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold">
                 <ExternalLink className="mr-2" size={18} />
                 View Live Site
               </Button>
             </Link>
-            <Link href="https://github.com/ThomasJButler/AI-Comparison-Showcase-" target="_blank">
+            <Link href="https://github.com/ThomasJButler/sql-ball" target="_blank">
               <Button variant="outline" className="border-green-500 text-green-400 hover:bg-green-500/10">
                 <Github className="mr-2" size={18} />
                 View on GitHub
@@ -116,17 +116,18 @@ export default function AIComparisonShowcasePage() {
           {/* Project Overview */}
           <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6" style={{ opacity: 0 }}>
             <h2 className="text-2xl font-semibold text-green-400 mb-4 flex items-center">
-              <Code2 className="mr-2" size={24} />
+              <Database className="mr-2" size={24} />
               Project Overview
             </h2>
             <p className="text-gray-300 mb-4">
-              A cutting-edge web application that allows users to compare responses from multiple AI models
-              simultaneously. Built with modern web technologies to provide real-time comparisons and insights
-              into how different AI models interpret and respond to the same prompts.
+              A comprehensive data analytics platform that combines natural language queries with
+              football match statistics. Features AI-powered insights, player performance analysis,
+              and predictive modeling using Supabase for real-time data processing.
             </p>
             <p className="text-gray-300">
-              This project demonstrates advanced API integration, real-time data handling, and sophisticated
-              UI/UX design patterns to create an intuitive comparison platform for AI enthusiasts and developers.
+              This contest-winning project demonstrates advanced natural language to SQL conversion,
+              real-time database integration, and sophisticated sports data visualization techniques
+              to create an intuitive analytics platform for football enthusiasts.
             </p>
           </div>
 
@@ -140,19 +141,19 @@ export default function AIComparisonShowcasePage() {
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">Frontend:</strong> Next.js 14, TypeScript, Tailwind CSS
+                  <strong className="text-white">Database:</strong> Supabase (PostgreSQL), Real-time subscriptions
                 </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">AI Models:</strong> OpenAI GPT-4, Claude 3, Gemini Pro
+                  <strong className="text-white">Frontend:</strong> React, TypeScript, D3.js visualizations
                 </span>
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                 <span className="text-gray-300">
-                  <strong className="text-white">State Management:</strong> Zustand, TanStack Query
+                  <strong className="text-white">AI Integration:</strong> LangChain, OpenAI GPT-4, RAG pipeline
                 </span>
               </div>
               <div className="flex items-center">
@@ -176,38 +177,38 @@ export default function AIComparisonShowcasePage() {
           <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "Real-time Comparison",
-                description: "Compare AI responses as they stream in real-time",
+                title: "Natural Language Queries",
+                description: "Ask questions in plain English and get SQL results",
                 color: "from-green-500/20 to-green-600/10",
                 borderColor: "border-green-500/30"
               },
               {
-                title: "Multiple AI Models",
-                description: "Support for GPT-4, Claude, Gemini, and more",
+                title: "Real-time Analytics",
+                description: "Live match data integration with instant updates",
                 color: "from-cyan-500/20 to-cyan-600/10",
                 borderColor: "border-cyan-500/30"
               },
               {
-                title: "Response Analytics",
-                description: "Analyze response times, token usage, and costs",
+                title: "Player Performance",
+                description: "Comprehensive player statistics and analysis",
                 color: "from-purple-500/20 to-purple-600/10",
                 borderColor: "border-purple-500/30"
               },
               {
-                title: "Prompt Templates",
-                description: "Save and reuse prompt templates for consistency",
+                title: "Match Predictions",
+                description: "AI-powered match outcome predictions",
                 color: "from-yellow-500/20 to-yellow-600/10",
                 borderColor: "border-yellow-500/30"
               },
               {
-                title: "Export Results",
-                description: "Export comparisons as JSON, CSV, or PDF",
+                title: "Interactive Visualizations",
+                description: "Dynamic charts and graphs with D3.js",
                 color: "from-red-500/20 to-red-600/10",
                 borderColor: "border-red-500/30"
               },
               {
-                title: "Dark Mode UI",
-                description: "Beautiful dark theme optimized for developers",
+                title: "Fantasy Insights",
+                description: "Data-driven fantasy football recommendations",
                 color: "from-indigo-500/20 to-indigo-600/10",
                 borderColor: "border-indigo-500/30"
               }
@@ -234,21 +235,23 @@ export default function AIComparisonShowcasePage() {
           </h2>
           <ImageGallery
             images={[
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053629/buildmodel_bbmlst.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053562/aicodeoutput_l0bp9d.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053563/aicompare_wnz39e.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1758029930/particleuniverseaicomparison_kydtbd.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1737693677/Usage_Patterns_iw5j6a.png",
-              "https://res.cloudinary.com/depqttzlt/image/upload/v1737694764/python_projects_cxbrnj.png"
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053634/SQLballdesktop_kmxlox.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053633/sqlballbuilderprompt_xgxxvu.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053631/sqlball_yqwjsp.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053634/sqlreturnedata_ltwuep.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053631/SQL-Ball_zd6q2p.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053628/aiassistantlivecalculation_lv3n0h.png",
+              "https://res.cloudinary.com/depqttzlt/image/upload/v1758053633/sqlballmobile_bwzffy.png"
             ]}
-            title="AI Comparison Showcase"
+            title="SQL-Ball"
             customCaptions={[
-              "Building AI Model Integration",
-              "AI Code Output Display",
-              "AI Model Comparison Interface",
-              "Particle Universe Visualization",
-              "Usage Patterns Analytics",
-              "Python Projects Dashboard"
+              "SQL-Ball Main Dashboard",
+              "SQL Builder Prompt Interface",
+              "Interactive SQL Ball Interface",
+              "SQL Query Results Display",
+              "Football Analytics Dashboard",
+              "AI Assistant Live Calculations",
+              "Mobile Responsive Design"
             ]}
           />
         </div>
@@ -263,19 +266,53 @@ export default function AIComparisonShowcasePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Performance</h3>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Natural Language Processing</h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Optimized API calls with request batching
+                  Advanced prompt engineering for SQL generation
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Response caching for improved performance
+                  Context-aware query understanding
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Lazy loading and code splitting
+                  Real-time semantic analysis of user intent
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">Database Architecture</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Optimized PostgreSQL schema design
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Supabase integration for real-time data
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Efficient indexing for complex queries
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-cyan-400 mb-3">AI Integration</h3>
+              <ul className="space-y-2 text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  LangChain framework for RAG implementation
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  Vector embeddings for semantic search
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-400 mr-2">•</span>
+                  OpenAI GPT-4 for intelligent query generation
                 </li>
               </ul>
             </div>
@@ -288,11 +325,11 @@ export default function AIComparisonShowcasePage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Keyboard shortcuts for power users
+                  Interactive data visualizations with D3.js
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-400 mr-2">•</span>
-                  Accessibility-first development
+                  Real-time feedback and error handling
                 </li>
               </ul>
             </div>
@@ -305,13 +342,13 @@ export default function AIComparisonShowcasePage() {
         {/* CTA Section */}
         <div className="text-center py-8">
           <div className="flex gap-4 justify-center">
-            <Link href="https://ai-comparison-showcase.vercel.app" target="_blank">
+            <Link href="https://sql-ball.vercel.app/" target="_blank">
               <Button size="lg" className="bg-gradient-to-r from-green-500 to-cyan-500 hover:from-green-600 hover:to-cyan-600 text-black font-bold">
                 <ExternalLink className="mr-2" size={20} />
                 Try the Live Demo
               </Button>
             </Link>
-            <Link href="https://github.com/ThomasJButler/AI-Comparison-Showcase-" target="_blank">
+            <Link href="https://github.com/ThomasJButler/sql-ball" target="_blank">
               <Button size="lg" variant="outline" className="border-green-500 text-green-400 hover:bg-green-500/10">
                 <Github className="mr-2" size={20} />
                 View Source Code

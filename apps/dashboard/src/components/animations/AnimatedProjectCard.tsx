@@ -384,8 +384,8 @@ export default function AnimatedProjectCard({ project, index }: AnimatedProjectC
             ))}
           </div>
 
-          {/* Show dual buttons for AI Comparison and SQL-Ball */}
-          {(project.id === "ai-comparison-showcase" || project.id === "sql-ball") && project.demo ? (
+          {/* Show dual buttons for AI Comparison, AI Code Generator, and SQL-Ball */}
+          {(project.id === "ai-comparison-showcase" || project.id === "ai-code-generator" || project.id === "sql-ball") && project.demo ? (
             <div className="grid grid-cols-2 gap-2">
               <Link href={`/projects/${project.id}`}>
                 <Button
