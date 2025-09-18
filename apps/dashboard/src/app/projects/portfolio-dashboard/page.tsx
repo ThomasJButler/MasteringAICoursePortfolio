@@ -99,7 +99,7 @@ export default function PortfolioDashboardPage() {
             <Link href="/">
               <Button className="bg-green-500 hover:bg-green-600 text-black font-semibold">
                 <ExternalLink className="mr-2" size={18} />
-                You're Here Now!
+                You&apos;re Here Now!
               </Button>
             </Link>
             <Link href="https://github.com/ThomasJButler/MasteringAICoursePortfolio" target="_blank">
