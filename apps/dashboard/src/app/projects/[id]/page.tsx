@@ -14,44 +14,63 @@ import MatrixDivider from "@/components/ui/MatrixDivider";
 const projectDetails = {
   "ai-code-generator": {
     title: "AI Code Generator",
-    fullDescription: "An intelligent natural language to code conversion system that leverages advanced AI models to generate high-quality, well-structured code from plain English descriptions. Features support for multiple programming languages and frameworks.",
-    week: "Week 1",
-    status: "upcoming",
-    techStack: ["LangChain", "GPT-4o", "Tree-sitter", "Python", "TypeScript"],
+    fullDescription: "An intelligent natural language to code conversion system that leverages advanced AI models to generate high-quality, well-structured code from plain English descriptions. Features support for multiple programming languages and frameworks with automated testing and documentation generation.",
+    week: "Week 1-2",
+    status: "completed",
+    techStack: ["LangChain", "GPT-4o", "Python", "Flask", "React", "TypeScript"],
     learnings: [
       "Advanced prompt engineering for code generation tasks",
-      "Multi-language code generation strategies",
-      "AST parsing and code structure validation",
-      "Context-aware code completion techniques",
-      "Performance optimization for real-time generation"
+      "Multi-language code generation strategies with context awareness",
+      "Real-time streaming responses with Flask and React integration",
+      "Automated test generation and validation patterns",
+      "Documentation generation with AI-powered explanations",
+      "Performance optimization for production-ready code output"
     ],
     features: [
-      "Natural language to code generation",
-      "Multi-language support (Python, TypeScript, Java, C#)",
-      "Test case generation for any function",
-      "Code documentation generation",
-      "Framework-specific code templates",
-      "UK English code comments support",
-      "Design pattern integration",
-      "Code quality optimization"
+      "Natural language to code generation with multiple programming languages",
+      "Automated test case generation for generated functions",
+      "Comprehensive code documentation generation",
+      "Real-time code streaming and syntax highlighting",
+      "Multi-language support (Python, JavaScript, Java, C#, etc.)",
+      "Framework-specific code templates and patterns",
+      "Code quality optimization and best practices enforcement",
+      "Responsive design with mobile and desktop support"
     ],
     screenshots: {
-      desktop: ["Desktop screenshots will be added next week"],
-      mobile: ["Mobile screenshots will be added next week"],
+      desktop: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratorfrontend_jccy53.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201815/codegeneratorcode_lrojre.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratortests_an5wmq.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratordocs_snywas.png"
+      ],
+      mobile: [
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/ai-code-generator-rouge.vercel.appmobile1__jlxcm2.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/ai-code-generator-rouge.vercel.appmobile2_cxmy8i.png"
+      ],
       structure: [
-        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053567/codegeneratorfrontend_vlbd6x.png",
-        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053565/codegeneratorbackend2_bvtakw.png",
-        "https://res.cloudinary.com/depqttzlt/image/upload/v1758053564/codegeneratorbackend_c54fgp.png"
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratorfrontend_jccy53.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201815/codegeneratorcode_lrojre.png",
+        "https://res.cloudinary.com/depqttzlt/image/upload/v1758201680/codegeneratortests_an5wmq.png"
       ]
     },
+    desktopCaptions: [
+      "Frontend Application Interface",
+      "Code Generation Output",
+      "Automated Test Generation",
+      "Documentation Generation"
+    ],
+    mobileCaptions: [
+      "Mobile Responsive Interface",
+      "Mobile Code Generation View"
+    ],
     structureCaptions: [
       "Frontend Application Flow",
       "Backend API Architecture",
       "Code Generation Pipeline"
     ],
-    implementation: "Coming soon...",
-    github: "https://github.com/ThomasJButler/ai-code-generator",
-    demo: null 
+    implementation: "Fully functional AI-powered code generation platform with multi-language support, automated testing, and comprehensive documentation generation. Built with Flask backend and React frontend for optimal performance.",
+    github: "https://github.com/ThomasJButler/AICodeGenerator",
+    demo: "https://ai-code-generator-rouge.vercel.app/"
   },
   "git-review-assistant": {
     title: "Git Review Assistant",
@@ -184,8 +203,8 @@ const projectDetails = {
   "sql-ball": {
     title: "SQL-Ball",
     fullDescription: "A data analytics platform that combines natural language queries with comprehensive match statistics. Features AI-powered insights, player performance analysis, and predictive modeling using Supabase for real-time data.",
-    week: "Contest",
-    status: "in-progress",
+    week: "Final Project",
+    status: "completed",
     techStack: ["Supabase", "LangChain", "OpenAI", "D3.js", "React", "PostgreSQL"],
     learnings: [
       "Sports data analytics and statistical modeling",
@@ -248,9 +267,9 @@ const projectDetails = {
   },
   "portfolio-dashboard": {
     title: "Portfolio Dashboard",
-    fullDescription: "This stunning portfolio website showcasing all AI projects from the bootcamp. Features modern animations, responsive design, and an immersive Matrix-themed experience.",
-    week: "Ongoing",
-    status: "in-progress",
+    fullDescription: "This stunning portfolio website showcasing all AI projects from the bootcamp. Features modern animations, responsive design, and an immersive Matrix-themed experience. Built completely from scratch with cutting-edge web technologies.",
+    week: "Meta Project",
+    status: "completed",
     techStack: ["Next.js 15", "Tailwind CSS", "Anime.js", "Framer Motion", "TypeScript"],
     learnings: [
       "Next.js 15 App Router and server-side rendering optimizations",
@@ -297,7 +316,7 @@ const projectDetails = {
       "Next.js Frontend Architecture",
       "Anime.js Implementation"
     ],
-    implementation: "You're looking at it! This portfolio is built with cutting-edge web technologies.",
+    implementation: "You're looking at it! This portfolio is built completely from scratch with cutting-edge web technologies including Next.js 15, TypeScript, Tailwind CSS, and Anime.js for smooth animations. Features Matrix rain effects, responsive design, and optimized performance.",
     github: "https://github.com/ThomasJButler/MasteringAICoursePortfolio",
     demo: "/"
   }
@@ -507,84 +526,162 @@ export default function ProjectDetailPage() {
           </div>
         </div>
 
-        {/* Implementation Highlights - Only for SQL-Ball */}
-        {projectId === "sql-ball" && (
+        {/* Implementation Highlights - Only for SQL-Ball and AI Code Generator */}
+        {(projectId === "sql-ball" || projectId === "ai-code-generator") && (
           <>
             <MatrixDivider variant="glow" />
             <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8 mb-12">
             <h2 className="text-3xl font-semibold text-green-400 mb-6 text-center">
               Implementation Highlights
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xl font-semibold text-cyan-400 mb-3">Natural Language Processing</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Advanced prompt engineering for SQL generation
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Context-aware query understanding
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Real-time semantic analysis of user intent
-                  </li>
-                </ul>
+
+            {/* SQL-Ball Implementation Highlights */}
+            {projectId === "sql-ball" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Natural Language Processing</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Advanced prompt engineering for SQL generation
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Context-aware query understanding
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Real-time semantic analysis of user intent
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Database Architecture</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Optimized PostgreSQL schema design
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Supabase integration for real-time data
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Efficient indexing for complex queries
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">AI Integration</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      LangChain framework for RAG implementation
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Vector embeddings for semantic search
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      OpenAI GPT-4 for intelligent query generation
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">User Experience</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Responsive design for all devices
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Interactive data visualizations with D3.js
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Real-time feedback and error handling
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-cyan-400 mb-3">Database Architecture</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Optimized PostgreSQL schema design
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Supabase integration for real-time data
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Efficient indexing for complex queries
-                  </li>
-                </ul>
+            )}
+
+            {/* AI Code Generator Implementation Highlights */}
+            {projectId === "ai-code-generator" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Code Generation Engine</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Advanced LangChain integration with GPT-4o
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Multi-language code generation with context awareness
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Real-time streaming code output with syntax highlighting
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Testing & Documentation</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Automated test case generation for functions
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Comprehensive code documentation generation
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Code quality validation and best practices enforcement
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">Architecture</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Flask backend with RESTful API design
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      React frontend with TypeScript for type safety
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Optimized prompt engineering for code quality
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400 mb-3">User Experience</h3>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Responsive design for desktop and mobile
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Tabbed interface for code, tests, and documentation
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">•</span>
+                      Copy-to-clipboard functionality and code export
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-cyan-400 mb-3">AI Integration</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    LangChain framework for RAG implementation
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Vector embeddings for semantic search
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    OpenAI GPT-4 for intelligent query generation
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-cyan-400 mb-3">User Experience</h3>
-                <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Responsive design for all devices
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Interactive data visualizations with D3.js
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-400 mr-2">•</span>
-                    Real-time feedback and error handling
-                  </li>
-                </ul>
-              </div>
-            </div>
+            )}
             </div>
           </>
         )}
