@@ -11,6 +11,8 @@
 
 🔗 **[View Portfolio](https://www.aitomatic.io/)**
 
+<img width="1271" height="391" alt="image" src="https://github.com/user-attachments/assets/1ccee852-513a-4301-bfb6-716af731ba83" />
+
 ## 📚 Projects Overview
 
 ### 🏆 Featured Projects
